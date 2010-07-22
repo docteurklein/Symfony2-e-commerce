@@ -1,0 +1,6 @@
+homepage:
+    pattern:  /
+    defaults: { _controller: ECommerceBundle:ECommerce:index }
+
+eCommerce:
+    resource: ECommerceBundle/Resources/config/routing.yml

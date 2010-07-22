@@ -1,0 +1,5 @@
+imports:
+    - { resource: config.yml }
+
+web.config:
+    toolbar: true

@@ -1,0 +1,15 @@
+[submodule "src/vendor/doctrine"]
+	path = src/vendor/doctrine
+	url = git://github.com/doctrine/doctrine2.git
+[submodule "src/vendor/doctrine-migrations"]
+	path = src/vendor/doctrine-migrations
+	url = git://github.com/doctrine/migrations.git
+[submodule "src/vendor/swiftmailer"]
+	path = src/vendor/swiftmailer
+	url = git://github.com/swiftmailer/swiftmailer.git
+[submodule "src/Bundle/DoctrineUserBundle"]
+	path = src/Bundle/DoctrineUserBundle
+	url = git://github.com/knplabs/DoctrineUserBundle.git
+[submodule "src/vendor/symfony"]
+	path = src/vendor/symfony
+	url = git://github.com/fabpot/symfony.git

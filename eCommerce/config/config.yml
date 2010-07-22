@@ -1,0 +1,12 @@
+parameters:
+    kernel.include_core_classes: false
+
+kernel.config: ~
+
+web.config:
+  router: { resource: "%kernel.root_dir%/config/routing.yml" }
+
+web.templating: ~
+
+doctrine.dbal: ~
+doctrine.orm: ~

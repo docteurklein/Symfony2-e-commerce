@@ -1,0 +1,3 @@
+eCommerce:
+    pattern:  /dashboard
+    defaults: { _controller: ECommerceBundle:ECommerce:dashboard }
