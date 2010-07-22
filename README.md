@@ -1,4 +1,4 @@
-#Symfony2 -e-commerce Solution
+#Symfony2 e-commerce Solution
 
 
 ##Overview
