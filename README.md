@@ -3,8 +3,7 @@
 
 ##Overview
 
-A tentative of e-commerce solution based on independant Bundles
-
+A work-in-progress tentative of e-commerce solution based on independant Bundles
 
 
 ##Installation
