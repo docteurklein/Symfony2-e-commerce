@@ -1,10 +1,9 @@
-#Symfony2 -e-commerce Solution
+#Symfony2 e-commerce Solution
 
 
 ##Overview
 
-A tentative of e-commerce solution based on independant Bundles
-
+A work-in-progress tentative of e-commerce solution based on independant Bundles
 
 
 ##Installation
