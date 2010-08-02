@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__.'/../hello/HelloKernel.php';
+require_once __DIR__.'/../eCommerce/ECommerceKernel.php';
 
-$kernel = new HelloKernel('prod', false);
+$kernel = new ECommerceKernel('prod', false);
 $kernel->handle()->send();

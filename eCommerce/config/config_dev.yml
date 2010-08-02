@@ -1,5 +1,10 @@
 imports:
-    - { resource: config.yml }
+  - { resource: config.yml }
 
 web.config:
-    toolbar: true
+  toolbar: true
+  esi: ~
+
+zend.logger:
+  priority: debug
+  path:     %kernel.root_dir%/logs/%kernel.environment%.log

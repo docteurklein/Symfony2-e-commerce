@@ -1,2 +1,3 @@
 eCommerce/cache/*
 eCommerce/logs/*
+eCommerce/config/config.yml

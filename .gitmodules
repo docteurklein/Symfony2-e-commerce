@@ -13,3 +13,9 @@
 [submodule "src/vendor/symfony"]
 	path = src/vendor/symfony
 	url = git://github.com/fabpot/symfony.git
+[submodule "src/vendor/zend"]
+	path = src/vendor/zend
+	url = http://github.com/zendframework/zf2.git
+[submodule "src/vendor/mongodb-odm"]
+	path = src/vendor/mongodb-odm
+	url = git://github.com/doctrine/mongodb-odm.git

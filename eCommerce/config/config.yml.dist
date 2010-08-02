@@ -1,0 +1,28 @@
+parameters: 
+    kernel.include_core_classes: false
+
+kernel.config: ~
+
+web.config:
+  router: { resource: "%kernel.root_dir%/config/routing.yml" }
+
+web.templating: ~
+
+doctrine.dbal:
+  connections:
+    default:
+      dbname:               symfony2_ecommerce
+      user:                 root
+      password:             ~
+
+doctrine.orm:
+  auto_generate_proxy_classes:      true
+  metadata_cache_driver:            apc
+  result_cache_driver:              apc
+  query_cache_driver:               apc
+
+doctrine_odm.mongodb:
+  server: mongodb://localhost:27017
+  options:
+    connect: true
+  metadata_cache_driver: apc

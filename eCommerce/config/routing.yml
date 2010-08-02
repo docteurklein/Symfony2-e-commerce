@@ -1,3 +1,8 @@
+
+_esi:
+  resource:  "FrameworkBundle/Resources/config/internal_routing.xml"
+  prefix:    "/_esi"
+
 homepage:
     pattern:  /
     defaults: { _controller: ECommerceBundle:ECommerce:index }

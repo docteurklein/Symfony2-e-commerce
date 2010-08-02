@@ -18,8 +18,14 @@ The last command requires Git >= 1.6. Alternatively, you can run `git submodule 
 
 
 
-####Use Cases
+####Links
 
+http://www.doctrine-project.org/blog/mongodb-for-ecommerce
 
-![user payment experience](http://ks358168.kimsufi.com/user_payment_experience.png)
+http://ks358168.kimsufi.com/user_payment_experience.png
+
+http://www.cs.toronto.edu/~matz/instruct/csc407/lectures/uml_for_e-commerce.pdf
+
+www.dotnetguru.org/articles/UML/UMLDotNet.pdf
+
 

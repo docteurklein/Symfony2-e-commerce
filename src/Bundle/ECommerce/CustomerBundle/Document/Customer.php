@@ -1,16 +1,18 @@
 <?php
 
-namespace Doctrine\Tests\Models\ECommerce;
+namespace Bundle\ECommerce\CustomerBundle\Entities;
+
+use Bundle\ECommerce\CartBundle\Entities\Cart;
 
 /**
- * ECommerceCustomer
+ * Customer
  * Represents a registered user of a shopping application.
  *
- * @author Giorgio Sironi
+ * @author Klein Florian
  * @Entity
- * @Table(name="ecommerce_customers")
+ * @Table(name="customer")
  */
-class ECommerceCustomer
+class Customer
 {
     /**
      * @Column(type="integer")
@@ -25,7 +27,7 @@ class ECommerceCustomer
     private $name;
 
     /**
-     * @OneToOne(targetEntity="ECommerceCart", mappedBy="customer", cascade={"persist"})
+     * @OneToOne(targetEntity="Bundle\ECommerce\CartBundle\Entities\Cart", mappedBy="customer", cascade={"persist"})
      */
     private $cart;
 
@@ -34,7 +36,7 @@ class ECommerceCustomer
      * only one customer at the time, while a customer can choose only one
      * mentor. Not properly appropriate but it works.
      * 
-     * @OneToOne(targetEntity="ECommerceCustomer", cascade={"persist"})
+     * @OneToOne(targetEntity="Customer", cascade={"persist"})
      * @JoinColumn(name="mentor_id", referencedColumnName="id")
      */
     private $mentor;
@@ -51,17 +53,12 @@ class ECommerceCustomer
         $this->name = $name;
     }
 
-    public function setCart(ECommerceCart $cart)
+    public function setCart(Cart $cart)
     {
         if ($this->cart !== $cart) {
             $this->cart = $cart;
             $cart->setCustomer($this);   
         }
-    }
-    
-    /* Does not properly maintain the bidirectional association! */
-    public function brokenSetCart(ECommerceCart $cart) {
-        $this->cart = $cart;
     }
     
     public function getCart() {
@@ -77,7 +74,7 @@ class ECommerceCustomer
         }
     }
 
-    public function setMentor(ECommerceCustomer $mentor)
+    public function setMentor(Customer $mentor)
     {
         $this->mentor = $mentor;
     }

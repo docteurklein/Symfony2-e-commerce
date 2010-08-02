@@ -1,18 +1,21 @@
 <?php
 
-namespace Doctrine\Tests\Models\ECommerce;
+namespace Bundle\ECommerce\CartBundle\Entities;
+
+use Bundle\ECommerce\CustomerBundle\Entities\Customer;
+use Bundle\ECommerce\ProductBundle\Entities\Product;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * ECommerceCart
+ * Cart
  * Represents a typical cart of a shopping application.
  *
- * @author Giorgio Sironi
+ * @author Klein Florian
  * @Entity
- * @Table(name="ecommerce_carts")
+ * @Table(name="cart")
  */
-class ECommerceCart
+class Cart
 {
     /**
      * @Column(type="integer")
@@ -27,14 +30,14 @@ class ECommerceCart
     private $payment;
 
     /**
-     * @OneToOne(targetEntity="ECommerceCustomer", inversedBy="cart")
+     * @OneToOne(targetEntity="Bundle\ECommerce\CustomerBundle\Entities\Customer", inversedBy="cart")
      * @JoinColumn(name="customer_id", referencedColumnName="id")
      */
     private $customer;
 
     /**
-     * @ManyToMany(targetEntity="ECommerceProduct", cascade={"persist"})
-     * @JoinTable(name="ecommerce_carts_products",
+     * @ManyToMany(targetEntity="Bundle\ECommerce\ProductBundle\Entities\Product", cascade={"persist"})
+     * @JoinTable(name="cart_product",
             joinColumns={@JoinColumn(name="cart_id", referencedColumnName="id")},
             inverseJoinColumns={@JoinColumn(name="product_id", referencedColumnName="id")})
      */

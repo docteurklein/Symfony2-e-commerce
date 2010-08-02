@@ -1,18 +1,23 @@
 <?php
 
-namespace Doctrine\Tests\Models\ECommerce;
+namespace Bundle\ECommerce\ProductBundle\Entities;
 
+use Bundle\ECommerce\ProductBundle\Entities\Category;
+use Bundle\ECommerce\ShippingBundle\Entities\Shipping;
+
+use Symfony\Components\Validator\Constraints;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Components\Validator\Mapping\ClassMetadata;
 
 /**
- * ECommerceProduct
+ * Product
  * Represents a type of product of a shopping application.
  *
- * @author Giorgio Sironi
+ * @author Klein Florian
  * @Entity
- * @Table(name="ecommerce_products",indexes={@Index(name="name_idx", columns={"name"})})
+ * @Table(name="product",indexes={@Index(name="name_idx", columns={"name"})})
  */
-class ECommerceProduct
+class Product
 {
     /**
      * @Column(type="integer")
@@ -22,24 +27,24 @@ class ECommerceProduct
     private $id;
 
     /**
-     * @Column(type="string", length=50, nullable="true")
+     * @Column(type="string", length=255, nullable="true")
      */
     private $name;
 
     /**
-     * @OneToOne(targetEntity="ECommerceShipping", cascade={"persist"})
+     * @OneToOne(targetEntity="Bundle\ECommerce\ShippingBundle\Entities\Shipping", cascade={"persist"})
      * @JoinColumn(name="shipping_id", referencedColumnName="id")
      */
     private $shipping;
 
     /**
-     * @OneToMany(targetEntity="ECommerceFeature", mappedBy="product", cascade={"persist"})
+     * @OneToMany(targetEntity="Feature", mappedBy="product", cascade={"persist"})
      */
     private $features;
 
     /**
-     * @ManyToMany(targetEntity="ECommerceCategory", cascade={"persist"}, inversedBy="products")
-     * @JoinTable(name="ecommerce_products_categories",
+     * @ManyToMany(targetEntity="Category", cascade={"persist"}, inversedBy="product")
+     * @JoinTable(name="product_category",
      *      joinColumns={@JoinColumn(name="product_id", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="category_id", referencedColumnName="id")})
      */
@@ -48,8 +53,8 @@ class ECommerceProduct
     /**
      * This relation is saved with two records in the association table for 
      * simplicity.
-     * @ManyToMany(targetEntity="ECommerceProduct", cascade={"persist"})
-     * @JoinTable(name="ecommerce_products_related",
+     * @ManyToMany(targetEntity="Product", cascade={"persist"})
+     * @JoinTable(name="product_related",
      *      joinColumns={@JoinColumn(name="product_id", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="related_id", referencedColumnName="id")})
      */
@@ -82,7 +87,7 @@ class ECommerceProduct
         return $this->shipping;
     }
 
-    public function setShipping(ECommerceShipping $shipping)
+    public function setShipping(Shipping $shipping)
     {
         $this->shipping = $shipping;
     }
@@ -97,19 +102,13 @@ class ECommerceProduct
         return $this->features;
     }
 
-    public function addFeature(ECommerceFeature $feature)
+    public function addFeature(Feature $feature)
     {
         $this->features[] = $feature;
         $feature->setProduct($this);
     }
 
-    /** does not set the owning side */
-    public function brokenAddFeature(ECommerceFeature $feature)
-    {
-        $this->features[] = $feature;
-    }
-
-    public function removeFeature(ECommerceFeature $feature)
+    public function removeFeature(Feature $feature)
     {
         $removed = $this->features->removeElement($feature);
         if ($removed !== null) {
@@ -119,7 +118,7 @@ class ECommerceProduct
         return false;
     }
 
-    public function addCategory(ECommerceCategory $category)
+    public function addCategory(Category $category)
     {
         if (!$this->categories->contains($category)) {
             $this->categories[] = $category;
@@ -127,7 +126,7 @@ class ECommerceProduct
         }
     }
 
-    public function removeCategory(ECommerceCategory $category)
+    public function removeCategory(Category $category)
     {
         $removed = $this->categories->removeElement($category);
         if ($removed !== null) {
@@ -145,7 +144,7 @@ class ECommerceProduct
         return $this->related;
     }
 
-    public function addRelated(ECommerceProduct $related)
+    public function addRelated(Product $related)
     {
         if (!$this->related->contains($related)) {
             $this->related[] = $related;
@@ -153,7 +152,7 @@ class ECommerceProduct
         }
     }
 
-    public function removeRelated(ECommerceProduct $related)
+    public function removeRelated(Product $related)
     {
         $removed = $this->related->removeElement($related);
         if ($removed) {

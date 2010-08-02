@@ -22,7 +22,15 @@ class ECommerceKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle,
             new Symfony\Bundle\DoctrineBundle\DoctrineBundle,
             new Symfony\Bundle\DoctrineMigrationsBundle\DoctrineMigrationsBundle,
+            new Symfony\Bundle\DoctrineMongoDBBundle\DoctrineMongoDBBundle,
+            new Symfony\Bundle\ZendBundle\ZendBundle,
+
+	    // ECommerce Bundles
             new Application\ECommerceBundle\ECommerceBundle,
+            new Bundle\ECommerce\ShippingBundle\ShippingBundle,
+            new Bundle\ECommerce\ProductBundle\ProductBundle,
+            new Bundle\ECommerce\CustomerBundle\CustomerBundle,
+            new Bundle\ECommerce\CartBundle\CartBundle,
         );
 
         if ($this->isDebug()) {
@@ -35,6 +43,7 @@ class ECommerceKernel extends Kernel
     {
         $bundles = array(
             'Application'        => __DIR__.'/../src/Application',
+            'Bundle\\ECommerce'  => __DIR__.'/../src/Bundle/ECommerce',
             'Bundle'             => __DIR__.'/../src/Bundle',
             'Symfony\\Framework' => __DIR__.'/../src/vendor/symfony/src/Symfony/Framework',
             'Symfony\\Bundle'    => __DIR__.'/../src/vendor/symfony/src/Symfony/Bundle',

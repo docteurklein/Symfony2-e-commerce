@@ -1,3 +1,9 @@
-eCommerce:
-    pattern:  /dashboard
-    defaults: { _controller: ECommerceBundle:ECommerce:dashboard }
+dashboard:
+  pattern:  /dashboard
+  defaults: { _controller: ECommerceBundle:ECommerce:dashboard }
+
+products:
+  pattern:  /products
+  defaults: { _controller: ProductBundle:Product:index }
+
+

@@ -1,0 +1,6 @@
+imports:
+  - { resource: routing.yml }
+
+_internal:
+  pattern: /:controller/:path.:_format
+  defaults: { _controller: FoundationBundle:Internal:index }

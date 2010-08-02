@@ -1,16 +1,20 @@
 <?php
 
-namespace Doctrine\Tests\Models\ECommerce;
+namespace Bundle\ECommerce\ShippingBundle\Entities;
+
+use Symfony\Components\Validator\Constraints;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Components\Validator\Mapping\ClassMetadata;
 
 /**
- * ECommerceShipping
+ * Shipping
  * Represents a shipping method.
  *
- * @author Giorgio Sironi
+ * @author Klein Florian
  * @Entity
- * @Table(name="ecommerce_shippings")
+ * @Table(name="shipping")
  */
-class ECommerceShipping
+class Shipping
 {
     /**
      * @Id @Column(type="integer")

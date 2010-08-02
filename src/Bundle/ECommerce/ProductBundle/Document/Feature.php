@@ -1,15 +1,21 @@
 <?php
 
-namespace Doctrine\Tests\Models\ECommerce;
+namespace Bundle\ECommerce\ProductBundle\Entities;
+
+use Bundle\ECommerce\ProductBundle\Entities\Product;
+
+use Symfony\Components\Validator\Constraints;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Components\Validator\Mapping\ClassMetadata;
 
 /**
  * Describes a product feature.
  *
- * @author Giorgio Sironi
+ * @author Klein Florian
  * @Entity
- * @Table(name="ecommerce_features")
+ * @Table(name="feature")
  */
-class ECommerceFeature
+class Feature
 {
     /**
      * @Column(type="integer")
@@ -24,7 +30,7 @@ class ECommerceFeature
     private $description;
 
     /**
-     * @ManyToOne(targetEntity="ECommerceProduct", inversedBy="features")
+     * @ManyToOne(targetEntity="Product", inversedBy="features")
      * @JoinColumn(name="product_id", referencedColumnName="id")
      */
     private $product;
@@ -41,7 +47,7 @@ class ECommerceFeature
         $this->description = $description;
     }
     
-    public function setProduct(ECommerceProduct $product) {
+    public function setProduct(Product $product) {
         $this->product = $product;
     }
     

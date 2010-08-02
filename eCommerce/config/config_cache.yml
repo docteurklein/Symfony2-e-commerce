@@ -1,0 +1,6 @@
+imports:
+  - { resource: config.yml }
+
+web.config:
+  toolbar: true
+  router: { resource: "%kernel.root_dir%/config/routing_cache.yml" }
