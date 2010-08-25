@@ -2,7 +2,7 @@
 
 namespace Application\ECommerceBundle\Tests\Controller;
 
-use Symfony\Framework\FoundationBundle\Test\WebTestCase;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ECommerceControllerTest extends WebTestCase
 {

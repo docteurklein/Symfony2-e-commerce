@@ -27,6 +27,7 @@ class ECommerceKernel extends Kernel
 
 	    // ECommerce Bundles
             new Application\ECommerceBundle\ECommerceBundle,
+            new Bundle\ECommerce\SalesBundle\SalesBundle,
             new Bundle\ECommerce\ShippingBundle\ShippingBundle,
             new Bundle\ECommerce\ProductBundle\ProductBundle,
             new Bundle\ECommerce\CustomerBundle\CustomerBundle,
@@ -55,6 +56,13 @@ class ECommerceKernel extends Kernel
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         return $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
+
+        $em = $this->getContainer()->getDoctrine_Orm_Entity_ManagerService();
+
+        $eventManager = $em->getEventManager();
+        $eventManager->addEventListener(
+            array(\Doctrine\ORM\Events::postLoad), new ECommerceEventSubscriber($dm)
+        );
     }
 
     public function registerRoutes()

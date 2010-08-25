@@ -43,6 +43,11 @@ class Option
         $this->stockItem = $stockItem;
     }
 
+    public function  __toString()
+    {
+        return (string) $this->getName();
+    }
+
     /**
      * @return string
      */
@@ -70,3 +75,4 @@ class Option
         return $this->stockItem;
     }
 }
+

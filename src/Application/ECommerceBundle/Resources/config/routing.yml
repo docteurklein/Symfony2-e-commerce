@@ -6,4 +6,8 @@ products:
   pattern:  /products
   defaults: { _controller: ProductBundle:Product:index }
 
+product_show:
+  pattern:  /product/:id
+  defaults: { _controller: ProductBundle:Product:show }
+
 

@@ -23,15 +23,10 @@ class ConfigurableProduct
     protected $options = array();
 
     /**
-     * @var Documents\Option
+     * @var Bundle\ECommerce\ProductBundle\Document\Option
      * @Transient
      */
     protected $selectedOption;
-
-    public function  __construct($name)
-    {
-        $this->setName($name);
-    }
 
     public function  __toString()
     {
@@ -145,3 +140,4 @@ class ConfigurableProduct
     }
 
 }
+
