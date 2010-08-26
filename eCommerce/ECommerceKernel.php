@@ -25,7 +25,7 @@ class ECommerceKernel extends Kernel
             new Symfony\Bundle\DoctrineMongoDBBundle\DoctrineMongoDBBundle,
             new Symfony\Bundle\ZendBundle\ZendBundle,
 
-	    // ECommerce Bundles
+            // ECommerce Bundles
             new Application\ECommerceBundle\ECommerceBundle,
             new Bundle\ECommerce\SalesBundle\SalesBundle,
             new Bundle\ECommerce\ShippingBundle\ShippingBundle,
@@ -55,14 +55,17 @@ class ECommerceKernel extends Kernel
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        return $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
+        $return = $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
 
-        $em = $this->getContainer()->getDoctrine_Orm_Entity_ManagerService();
+        $em = $this->getContainer()->getDoctrine_Orm_EntityManagerService();
+        $dm = $this->getContainer()->getDoctrine_Odm_Mongodb_DocumentManagerService();
 
         $eventManager = $em->getEventManager();
         $eventManager->addEventListener(
             array(\Doctrine\ORM\Events::postLoad), new ECommerceEventSubscriber($dm)
         );
+        
+        return $return;
     }
 
     public function registerRoutes()
@@ -72,3 +75,4 @@ class ECommerceKernel extends Kernel
         return $loader->load(__DIR__.'/config/routing.yml');
     }
 }
+

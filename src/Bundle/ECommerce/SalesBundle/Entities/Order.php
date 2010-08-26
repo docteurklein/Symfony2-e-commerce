@@ -14,7 +14,7 @@ use Bundle\ECommerce\ProductBundle\Document\ConfigurableProduct;
  *
  * @author Klein Florian
  * @Entity
- * @Table(name="order")
+ * @Table(name="sales_order")
  * @HasLifecycleCallbacks
  */
 class Order
