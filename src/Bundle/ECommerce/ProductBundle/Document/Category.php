@@ -4,9 +4,9 @@ namespace Bundle\ECommerce\ProductBundle\Entities;
 
 use Bundle\ECommerce\ProductBundle\Entities\Product;
 
-use Symfony\Components\Validator\Constraints;
+use Symfony\Component\Validator\Constraints;
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Components\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 /**
  * Category

@@ -3,9 +3,9 @@
 require_once __DIR__.'/../src/autoload.php';
 
 use Symfony\Framework\Kernel;
-use Symfony\Components\Routing\Loader\YamlFileLoader as RoutingLoader;
+use Symfony\Component\Routing\Loader\YamlFileLoader as RoutingLoader;
 
-use Symfony\Components\DependencyInjection\Loader\LoaderInterface;
+use Symfony\Component\DependencyInjection\Loader\LoaderInterface;
 
 class ECommerceKernel extends Kernel
 {
@@ -55,17 +55,7 @@ class ECommerceKernel extends Kernel
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $return = $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
-
-        $em = $this->getContainer()->getDoctrine_Orm_EntityManagerService();
-        $dm = $this->getContainer()->getDoctrine_Odm_Mongodb_DocumentManagerService();
-
-        $eventManager = $em->getEventManager();
-        $eventManager->addEventListener(
-            array(\Doctrine\ORM\Events::postLoad), new ECommerceEventSubscriber($dm)
-        );
-        
-        return $return;
+        return $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
     }
 
     public function registerRoutes()

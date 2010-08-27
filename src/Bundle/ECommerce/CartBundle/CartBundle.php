@@ -3,8 +3,8 @@
 namespace Bundle\ECommerce\CartBundle;
 
 use Symfony\Framework\Bundle\Bundle;
-use Symfony\Components\DependencyInjection\ContainerInterface;
-use Symfony\Components\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class CartBundle extends Bundle
 {
