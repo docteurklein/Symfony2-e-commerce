@@ -8,6 +8,11 @@ namespace Bundle\ECommerce\ProductBundle\Document;
 class Option
 {
     /**
+     * @Id
+     */
+    protected $id;
+
+    /**
      * @String
      * @var string
      */

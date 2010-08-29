@@ -2,6 +2,8 @@
 
 namespace Bundle\ECommerce\ProductBundle\Document;
 
+use Bundle\ECommerce\ProductBundle\Document\Option;
+
 /**
  * @Document(db="symfony2_ecommerce", collection="products")
  */

@@ -2,12 +2,6 @@ dashboard:
   pattern:  /dashboard
   defaults: { _controller: ECommerceBundle:ECommerce:dashboard }
 
-products:
-  pattern:  /products
-  defaults: { _controller: ProductBundle:Product:index }
-
-product_show:
-  pattern:  /product/:id
-  defaults: { _controller: ProductBundle:Product:show }
-
+Product:
+    resource: ProductBundle/Resources/config/routing.yml
 

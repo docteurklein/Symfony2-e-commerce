@@ -10,8 +10,8 @@ class ECommerceControllerTest extends WebTestCase
     {
         $client = $this->createClient();
 
-        $crawler = $client->request('GET', '/ECommerce/Fabien');
+        $crawler = $client->request('GET', '/');
 
-        $this->assertFalse($crawler->filter('html:contains("Hello Fabien")')->isEmpty());
+        $this->assertRegExp('/products/', $client->getResponse()->getContent());
     }
 }

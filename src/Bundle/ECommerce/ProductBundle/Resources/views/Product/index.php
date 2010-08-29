@@ -5,7 +5,7 @@
 
 <ul>
 <?php foreach($products as $product): ?>
-    <li><?php echo $product ?></li>
+    <li><a href="<?php echo $view['router']->generate('product_show', array('id' => $product->getId())) ?>"><?php echo $product ?></a></li>
 <?php endforeach ?>
 </ul>
 

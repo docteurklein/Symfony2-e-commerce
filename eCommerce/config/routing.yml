@@ -1,6 +1,6 @@
 
 _esi:
-  resource:  "FrameworkBundle/Resources/config/internal_routing.xml"
+  resource:  "FrameworkBundle/Resources/config/routing/internal.xml"
   prefix:    "/_esi"
 
 homepage:

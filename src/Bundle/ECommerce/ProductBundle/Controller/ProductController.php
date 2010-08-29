@@ -2,7 +2,7 @@
 
 namespace Bundle\ECommerce\ProductBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use Bundle\ECommerce\ProductBundle\Document\ConfigurableProduct;
