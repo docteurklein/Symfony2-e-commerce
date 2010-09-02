@@ -2,6 +2,8 @@
 
 namespace Bundle\ECommerce\ProductBundle\Document;
 
+use Bundle\ECommerce\SalesBundle\Entity\Order;
+
 use Bundle\ECommerce\ProductBundle\Document\Option;
 
 /**
@@ -23,6 +25,11 @@ class ConfigurableProduct
      * @EmbedMany(targetDocument="Bundle\ECommerce\ProductBundle\Document\Option")
      */
     protected $options = array();
+
+    /**
+     * @var Array a collection of Bundle\ECommerce\SalesBundle\Entity\Order;
+     */
+    private $orders = array();
 
     /**
      * @var Bundle\ECommerce\ProductBundle\Document\Option
@@ -53,6 +60,11 @@ class ConfigurableProduct
         }
         $this->name = $name;
         return $this;
+    }
+
+    public function getOrders()
+    {
+        return $this->orders;
     }
 
     public function getOptions()

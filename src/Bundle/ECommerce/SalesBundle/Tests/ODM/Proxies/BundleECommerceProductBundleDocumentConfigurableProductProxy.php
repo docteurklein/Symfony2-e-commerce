@@ -55,6 +55,12 @@ class BundleECommerceProductBundleDocumentConfigurableProductProxy extends \Bund
         return parent::setName($name);
     }
 
+    public function getOrders()
+    {
+        $this->load();
+        return parent::getOrders();
+    }
+
     public function getOptions()
     {
         $this->load();
