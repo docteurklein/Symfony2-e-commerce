@@ -1,6 +1,7 @@
 <?php
 
-require_once __DIR__.'/../eCommerce/ECommerceKernel.php';
+require_once __DIR__.'/../eCommerce/ECommerceCache.php';
 
-$kernel = new ECommerceKernel('prod', false);
+$kernel = new ECommerceCache(new ECommerceKernel('prod', true));
 $kernel->handle()->send();
+

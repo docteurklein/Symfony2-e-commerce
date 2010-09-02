@@ -35,6 +35,7 @@ class ECommerceKernel extends Kernel
         );
 
         if ($this->isDebug()) {
+            $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle;
         }
 
         return $bundles;

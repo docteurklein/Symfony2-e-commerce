@@ -2,6 +2,10 @@
 _esi:
   resource:  "FrameworkBundle/Resources/config/routing/internal.xml"
   prefix:    "/_esi"
+  
+_profiler:
+  resource: WebProfilerBundle/Resources/config/routing/profiler.xml
+  prefix:   /_profiler
 
 homepage:
     pattern:  /
