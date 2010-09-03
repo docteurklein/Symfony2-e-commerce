@@ -42,7 +42,7 @@ class MappedORMEventSubscriber
         $reflection_property->setAccessible(true);
         $reflection_property->setValue(
             $entity,
-            $this->dm->find($this->mapping['document'], $entity->{$this->mapping['pkeyGetter']}())
+            $this->dm->getReference($this->mapping['document'], $entity->{$this->mapping['pkeyGetter']}())
         );
     }
 }

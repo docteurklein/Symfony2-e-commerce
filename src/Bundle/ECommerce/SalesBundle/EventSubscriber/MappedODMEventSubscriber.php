@@ -47,7 +47,7 @@ class MappedODMEventSubscriber
     public function getValue($document)
     {
         if($this->mapping['type'] == 'one') {
-            return $this->em->find($this->mapping['entity'], $document->{$this->mapping['pkeyGetter']}());
+            return $this->em->getReference($this->mapping['entity'], $document->{$this->mapping['pkeyGetter']}());
         }
 
         if($this->mapping['type'] == 'many') {

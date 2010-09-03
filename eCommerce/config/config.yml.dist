@@ -4,9 +4,14 @@ parameters:
 kernel.config: ~
 
 web.config:
+  esi: ~
   router: { resource: "%kernel.root_dir%/config/routing.yml" }
 
 web.templating: ~
+
+zend.logger:
+  priority: info
+  path:     %kernel.root_dir%/logs/%kernel.environment%.log
 
 doctrine.dbal:
   connections:
