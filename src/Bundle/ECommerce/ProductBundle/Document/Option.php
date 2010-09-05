@@ -19,38 +19,14 @@ class Option
     protected $name;
 
     /**
-     * @EmbedOne(targetDocument="Bundle\ECommerce\ProductBundle\Document\Money")
-     * @var float
+     * @String
+     * @var string
      */
-    protected $money;
-
-    /**
-     * @ReferenceOne(targetDocument="Bundle\ECommerce\ProductBundle\Document\StockItem", cascade="all")
-     * @var Documents\StockItem
-     */
-    protected $stockItem;
-
-    /**
-     * @param string $name
-     * @param float $price
-     * @param StockItem $stockItem
-     */
-    public function __construct($name, Money $money, StockItem $stockItem)
-    {
-        $this->name = (string) $name;
-        if (empty($this->name)) {
-            throw new \InvalidArgumentException('option name cannot be empty');
-        }
-        $this->money = $money;
-        if (empty($this->money)) {
-            throw new \InvalidArgumentException('option price cannot be empty');
-        }
-        $this->stockItem = $stockItem;
-    }
+    protected $value;
 
     public function  __toString()
     {
-        return (string) $this->getName();
+        return (string) $this->getValue();
     }
 
     /**
@@ -62,22 +38,21 @@ class Option
     }
 
     /**
-     * @return float
+     * @return string
      */
-    public function getPrice($object = false)
+    public function getValue()
     {
-        if (true === $object) {
-            return $this->money;
-        }
-        return $this->money->getAmount();
+        return $this->value;
     }
 
     /**
-     * @return StockItem
+     * @return Option $this
      */
-    public function getStockItem()
+    public function setValue($value)
     {
-        return $this->stockItem;
+        $this->value = $value;
+
+        return $this;
     }
 }
 

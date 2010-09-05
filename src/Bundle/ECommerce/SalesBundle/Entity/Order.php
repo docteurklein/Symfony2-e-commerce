@@ -6,7 +6,7 @@ use Symfony\Component\Validator\Constraints;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 
-use Bundle\ECommerce\ProductBundle\Document\ConfigurableProduct;
+use Bundle\ECommerce\ProductBundle\Document\Product;
 
 /**
  * Order
@@ -31,7 +31,7 @@ class Order
     private $product_id;
 
     /**
-     * @var Bundle\ECommerce\ProductBundle\Document\ConfigurableProduct;
+     * @var Bundle\ECommerce\ProductBundle\Document\Product;
      */
     private $product;
 
@@ -45,7 +45,7 @@ class Order
         return $this->product_id;
     }
 
-    public function setProduct(ConfigurableProduct $product)
+    public function setProduct(Product $product)
     {
         $this->product_id = $product->getId();
         $this->product = $product;

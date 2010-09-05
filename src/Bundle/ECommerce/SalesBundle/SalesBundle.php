@@ -24,7 +24,7 @@ class SalesBundle extends Bundle
                 'events' => \Doctrine\ORM\Events::postLoad,
                 'mapping' => array(
                     'entity' => 'Bundle\ECommerce\SalesBundle\Entity\Order',
-                    'document' => 'Bundle\ECommerce\ProductBundle\Document\ConfigurableProduct',
+                    'document' => 'Bundle\ECommerce\ProductBundle\Document\Product',
                     'property' => 'product',
                     'pkeyGetter' => 'getProductId',
                     'type' => 'one'
@@ -36,7 +36,7 @@ class SalesBundle extends Bundle
             array(
                 'events' => \Doctrine\ODM\MongoDB\ODMEvents::postLoad,
                 'mapping' => array(
-                    'document' => 'Bundle\ECommerce\ProductBundle\Document\ConfigurableProduct',
+                    'document' => 'Bundle\ECommerce\ProductBundle\Document\Product',
                     'entity' => 'Bundle\ECommerce\SalesBundle\Entity\Order',
                     'property' => 'orders',
                     'pkeyGetter' => 'getId',

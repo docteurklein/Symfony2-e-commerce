@@ -25,6 +25,10 @@ class ECommerceKernel extends Kernel
             new Symfony\Bundle\DoctrineMongoDBBundle\DoctrineMongoDBBundle,
             new Symfony\Bundle\ZendBundle\ZendBundle,
 
+            // Security Bundles
+            new Bundle\DoctrineUserBundle\DoctrineUserBundle,
+            new Bundle\SecurityBundle\SecurityBundle,
+
             // ECommerce Bundles
             new Application\ECommerceBundle\ECommerceBundle,
             new Bundle\ECommerce\SalesBundle\SalesBundle,

@@ -2,26 +2,16 @@
 
 namespace Bundle\ECommerce\SalesBundle\Tests\Entity;
 
-// [Entity|Document]Manager creation specific
-use Doctrine\ORM\EntityManager,
-    Doctrine\ORM\Configuration;
-
-use Doctrine\Common\ClassLoader,
-    Doctrine\Common\Annotations\AnnotationReader,
-    Doctrine\ODM\MongoDB\DocumentManager,
-    Doctrine\ODM\MongoDB\Mongo,
-    Doctrine\ODM\MongoDB\Configuration as ODM_Configuration,
-    Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver;
-// end [Entity|Document]Manager creation specific
+use Application\ECommerceBundle\Tests\TestCase\TestCase;
 
 use Bundle\ECommerce\SalesBundle\EventSubscriber\MappedORMEventSubscriber;
 use Bundle\ECommerce\SalesBundle\EventSubscriber\MappedODMEventSubscriber;
 
 use Bundle\ECommerce\SalesBundle\Entity\Order;
-use Bundle\ECommerce\ProductBundle\Document\ConfigurableProduct;
+use Bundle\ECommerce\ProductBundle\Document\Product;
 
 
-class OrderTest extends \PHPUnit_Framework_TestCase
+class OrderTest extends TestCase
 {
     public function testOrder()
     {
@@ -33,7 +23,7 @@ class OrderTest extends \PHPUnit_Framework_TestCase
                 'events' => \Doctrine\ORM\Events::postLoad,
                 'mapping' => array(
                     'entity' => 'Bundle\ECommerce\SalesBundle\Entity\Order',
-                    'document' => 'Bundle\ECommerce\ProductBundle\Document\ConfigurableProduct',
+                    'document' => 'Bundle\ECommerce\ProductBundle\Document\Product',
                     'property' => 'product',
                     'pkeyGetter' => 'getProductId',
                     'type' => 'one'
@@ -45,7 +35,7 @@ class OrderTest extends \PHPUnit_Framework_TestCase
             array(
                 'events' => \Doctrine\ODM\MongoDB\ODMEvents::postLoad,
                 'mapping' => array(
-                    'document' => 'Bundle\ECommerce\ProductBundle\Document\ConfigurableProduct',
+                    'document' => 'Bundle\ECommerce\ProductBundle\Document\Product',
                     'entity' => 'Bundle\ECommerce\SalesBundle\Entity\Order',
                     'property' => 'orders',
                     'pkeyGetter' => 'getId',
@@ -55,7 +45,7 @@ class OrderTest extends \PHPUnit_Framework_TestCase
             )
         ));
 
-        $product = new ConfigurableProduct();
+        $product = new Product();
         $product->setName('test');
 
         $dm->persist($product);
@@ -73,7 +63,7 @@ class OrderTest extends \PHPUnit_Framework_TestCase
         $order_ref = $em->find('Bundle\ECommerce\SalesBundle\Entity\Order', $order->getId());
         
         // get reference product directly from mongodb
-        $product_ref = $dm->find('Bundle\ECommerce\ProductBundle\Document\ConfigurableProduct', $product->getId());
+        $product_ref = $dm->find('Bundle\ECommerce\ProductBundle\Document\Product', $product->getId());
         
         // get product from mongodb with a postLoad MappedORMEventListener
         $_product = $order_ref->getProduct();
@@ -85,41 +75,6 @@ class OrderTest extends \PHPUnit_Framework_TestCase
         $orders = $_product->getOrders();
         $this->assertTrue(count($orders) > 0);
         $this->assertTrue($orders[0]->getProduct() == $order_ref->getProduct());
-    }
-
-    public function getEm()
-    {
-        $cache = new \Doctrine\Common\Cache\ArrayCache;
-
-        $config = new Configuration;
-        $config->setMetadataCacheImpl($cache);
-        $driverImpl = $config->newDefaultAnnotationDriver(__DIR__.'/Entity');
-        $config->setMetadataDriverImpl($driverImpl);
-        $config->setQueryCacheImpl($cache);
-        $config->setProxyDir(__DIR__.'/ORM/Proxies');
-        $config->setProxyNamespace('ORM\Proxies');
-        $config->setAutoGenerateProxyClasses(true);
-
-        $connectionOptions = array(
-            'driver' => 'pdo_sqlite',
-            'path'   => __DIR__.'/OrderTests.sqlite',
-        );
-
-        return EntityManager::create($connectionOptions, $config);
-    }
-
-    public function getDm()
-    {
-        $config = new ODM_Configuration;
-        $config->setProxyDir(__DIR__.'/ODM/Proxies');
-        $config->setProxyNamespace('ODM\Proxies');
-        $config->setAutoGenerateProxyClasses(true);
-
-        $reader = new AnnotationReader();
-        $reader->setDefaultAnnotationNamespace('Doctrine\ODM\MongoDB\Mapping\\');
-        $config->setMetadataDriverImpl(new AnnotationDriver($reader, __DIR__ . '/Document'));
-
-        return DocumentManager::create(new Mongo(), $config);
     }
 }
 

@@ -1,75 +1,66 @@
 <?php
 
-namespace Bundle\ECommerce\ProductBundle\Entities;
+namespace Bundle\ECommerce\ProductBundle\Document;
 
-use Bundle\ECommerce\ProductBundle\Entities\Category;
-use Bundle\ECommerce\ShippingBundle\Entities\Shipping;
+use Bundle\ECommerce\SalesBundle\Entity\Order;
+use Bundle\ECommerce\ProductBundle\Document\Attribute;
 
-use Symfony\Component\Validator\Constraints;
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 /**
- * Product
- * Represents a type of product of a shopping application.
- *
- * @author Klein Florian
- * @Entity
- * @Table(name="product",indexes={@Index(name="name_idx", columns={"name"})})
+ * @Document(db="symfony2_ecommerce", collection="products")
  */
 class Product
 {
     /**
-     * @Column(type="integer")
      * @Id
-     * @GeneratedValue
      */
-    private $id;
+    protected $id;
 
     /**
-     * @Column(type="string", length=255, nullable="true")
+     * @String
      */
-    private $name;
+    protected $sku;
 
     /**
-     * @OneToOne(targetEntity="Bundle\ECommerce\ShippingBundle\Entities\Shipping", cascade={"persist"})
-     * @JoinColumn(name="shipping_id", referencedColumnName="id")
+     * @String
      */
-    private $shipping;
+    protected $name;
 
     /**
-     * @OneToMany(targetEntity="Feature", mappedBy="product", cascade={"persist"})
+     * @EmbedMany(targetDocument="Bundle\ECommerce\ProductBundle\Document\Attribute")
      */
-    private $features;
+    protected $attributes = array();
 
     /**
-     * @ManyToMany(targetEntity="Category", cascade={"persist"}, inversedBy="product")
-     * @JoinTable(name="product_category",
-     *      joinColumns={@JoinColumn(name="product_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="category_id", referencedColumnName="id")})
+     * @var Array a collection of Bundle\ECommerce\SalesBundle\Entity\Order;
      */
-    private $categories;
-
-    /**
-     * This relation is saved with two records in the association table for 
-     * simplicity.
-     * @ManyToMany(targetEntity="Product", cascade={"persist"})
-     * @JoinTable(name="product_related",
-     *      joinColumns={@JoinColumn(name="product_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="related_id", referencedColumnName="id")})
-     */
-    private $related;
+    protected $orders = array();
 
     public function __construct()
     {
-        $this->features = new ArrayCollection;
-        $this->categories = new ArrayCollection;
-        $this->related = new ArrayCollection;
+        $this->attributes = new ArrayCollection();
+    }
+
+    public function  __toString()
+    {
+        return (string) $this->getName();
     }
 
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getSKU()
+    {
+        return $this->sku;
+    }
+
+    public function setSKU($name)
+    {
+        $this->sku = (string) $sku;
+        return $this;
     }
 
     public function getName()
@@ -79,84 +70,46 @@ class Product
 
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = (string) $name;
+        return $this;
     }
 
-    public function getShipping()
+    public function getOrders()
     {
-        return $this->shipping;
+        return $this->orders;
     }
 
-    public function setShipping(Shipping $shipping)
+    public function getAttributes()
     {
-        $this->shipping = $shipping;
+        return $this->attributes;
     }
 
-    public function removeShipping()
+    public function addAttribute(Attribute $attribute)
     {
-        $this->shipping = null;
-    }
-
-    public function getFeatures()
-    {
-        return $this->features;
-    }
-
-    public function addFeature(Feature $feature)
-    {
-        $this->features[] = $feature;
-        $feature->setProduct($this);
-    }
-
-    public function removeFeature(Feature $feature)
-    {
-        $removed = $this->features->removeElement($feature);
-        if ($removed !== null) {
-            $removed->removeProduct();
-            return true;
+        if (!$this->hasAttribute($attribute)) {
+            $this->attributes[] = $attribute;
         }
-        return false;
+
+        return $this;
     }
 
-    public function addCategory(Category $category)
+    public function removeAttribute(Attribute $attribute)
     {
-        if (!$this->categories->contains($category)) {
-            $this->categories[] = $category;
-            $category->addProduct($this);
+        return $this->attributes->removeElement($attribute);
+    }
+
+    public function getAttribute(Attribute $attribute)
+    {
+        $key = array_search($attribute, $this->attributes->toArray(), true);
+        
+        if ($key !== false) {
+            return $this->attributes->get($key);
         }
     }
 
-    public function removeCategory(Category $category)
+    public function hasAttribute(Attribute $attribute)
     {
-        $removed = $this->categories->removeElement($category);
-        if ($removed !== null) {
-            $removed->removeProduct($this);
-        }
-    }
-
-    public function getCategories()
-    {
-        return $this->categories;
-    }
-
-    public function getRelated()
-    {
-        return $this->related;
-    }
-
-    public function addRelated(Product $related)
-    {
-        if (!$this->related->contains($related)) {
-            $this->related[] = $related;
-            $related->addRelated($this);
-        }
-    }
-
-    public function removeRelated(Product $related)
-    {
-        $removed = $this->related->removeElement($related);
-        if ($removed) {
-            $related->removeRelated($this);
-        }
+        return $this->attributes->contains($attribute);
     }
 }
+

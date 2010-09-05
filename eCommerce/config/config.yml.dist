@@ -16,9 +16,9 @@ zend.logger:
 doctrine.dbal:
   connections:
     default:
-      dbname:               symfony2_ecommerce
-      user:                 root
-      password:             ~
+      dbname:                       symfony2_ecommerce
+      user:                         root
+      password:                     ~
 
 doctrine.orm:
   auto_generate_proxy_classes:      true
@@ -27,7 +27,8 @@ doctrine.orm:
   query_cache_driver:               apc
 
 doctrine_odm.mongodb:
-  server: mongodb://localhost:27017
+  auto_generate_proxy_classes:      true
+  server:                           mongodb://localhost:27017
   options:
-    connect: true
-  metadata_cache_driver: apc
+    connect:                        true
+  metadata_cache_driver:            apc

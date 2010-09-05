@@ -19,3 +19,6 @@
 [submodule "src/vendor/mongodb-odm"]
 	path = src/vendor/mongodb-odm
 	url = git://github.com/doctrine/mongodb-odm.git
+[submodule "src/Bundle/SecurityBundle"]
+	path = src/Bundle/SecurityBundle
+	url = git://github.com/docteurklein/SecurityBundle.git

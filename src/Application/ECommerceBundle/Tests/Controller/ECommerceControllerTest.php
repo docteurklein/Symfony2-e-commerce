@@ -7,7 +7,6 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 class ECommerceControllerTest extends WebTestCase
 {
     /**
-     * @expectedException PHPUnit_Framework_Error
      */
     public function testIndex()
     {

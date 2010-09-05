@@ -1,54 +1,39 @@
 <?php
 
-namespace Bundle\ECommerce\ProductBundle\Entities;
+namespace Bundle\ECommerce\ProductBundle\Document;
 
-use Bundle\ECommerce\ProductBundle\Entities\Product;
+use Bundle\ECommerce\ProductBundle\Document\Product;
 
-use Symfony\Component\Validator\Constraints;
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 /**
- * Category
- * Represents a tag applied on particular products.
- *
- * @author Klein Florian
- * @Entity
- * @Table(name="category")
+ * @Document(db="symfony2_ecommerce", collection="categories")
  */
 class Category
 {
     /**
-     * @Id @Column(type="integer")
-     * @GeneratedValue(strategy="AUTO")
+     * @Id
      */
-    private $id;
+    protected $id;
 
     /**
-     * @Column(type="string", length=50)
+     * @String
      */
-    private $name;
+    protected $name;
 
     /**
-     * @ManyToMany(targetEntity="Product", mappedBy="category")
+     * @ReferenceMany(targetDocument="Bundle\ECommerce\ProductBundle\Document\Product")
      */
-    private $products;
-
-    /**
-     * @OneToMany(targetEntity="Category", mappedBy="parent", cascade={"persist"})
-     */
-    private $children;
-
-    /**
-     * @ManyToOne(targetEntity="Category", inversedBy="children")
-     * @JoinColumn(name="parent_id", referencedColumnName="id")
-     */
-    private $parent;
+    protected $products = array();
 
     public function __construct()
     {
         $this->products = new ArrayCollection();
-        $this->children = new ArrayCollection();
+    }
+
+    public function  __toString()
+    {
+        return (string) $this->getName();
     }
 
     public function getId()
@@ -63,23 +48,8 @@ class Category
 
     public function setName($name)
     {
-        $this->name = $name;
-    }
-
-    public function addProduct(Product $product)
-    {
-        if (!$this->products->contains($product)) {
-            $this->products[] = $product;
-            $product->addCategory($this);
-        }
-    }
-
-    public function removeProduct(Product $product)
-    {
-        $removed = $this->products->removeElement($product);
-        if ($removed !== null) {
-            $removed->removeCategory($this);
-        }
+        $this->name = (string) $name;
+        return $this;
     }
 
     public function getProducts()
@@ -87,37 +57,32 @@ class Category
         return $this->products;
     }
 
-    private function setParent(Category $parent)
+    public function addProduct(Product $product)
     {
-        $this->parent = $parent;
+        if (!$this->hasProduct($product)) {
+            $this->products[] = $product;
+        }
+
+        return $this;
     }
 
-    public function getChildren()
+    public function removeProduct(Product $product)
     {
-        return $this->children;
+        return $this->products->removeElement($product);
     }
 
-    public function getParent()
+    public function getProduct(Product $product)
     {
-        return $this->parent;
-    }
-
-    public function addChild(Category $child)
-    {
-        $this->children[] = $child;
-        $child->setParent($this);
-    }
-
-    public function removeChild(Category $child)
-    {
-        $removed = $this->children->removeElement($child);
-        if ($removed !== null) {
-            $removed->removeParent();
+        $key = array_search($product, $this->products->toArray(), true);
+        
+        if ($key !== false) {
+            return $this->products->get($key);
         }
     }
 
-    private function removeParent()
+    public function hasProduct(Product $product)
     {
-        $this->parent = null;
+        return $this->products->contains($product);
     }
 }
+

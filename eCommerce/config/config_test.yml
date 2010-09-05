@@ -7,4 +7,10 @@ web.config:
 zend.logger:
     priority: debug
 
+doctrine.dbal:
+  connections:
+    default:
+      driver:               PDOSqlite
+      path:                 %kernel.cache_dir%/OrderTests.sqlite
+
 kernel.test: ~
