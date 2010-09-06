@@ -1,11 +1,12 @@
 imports:
-    - { resource: config_dev.yml }
+  - { resource: config.yml }
 
 web.config:
-    toolbar: false
+  toolbar: false
 
 zend.logger:
-    priority: debug
+  priority: debug
+  path:     %kernel.root_dir%/logs/%kernel.environment%.log
 
 doctrine.dbal:
   connections:
@@ -14,3 +15,5 @@ doctrine.dbal:
       path:                 %kernel.cache_dir%/OrderTests.sqlite
 
 kernel.test: ~
+test_session.config: ~
+

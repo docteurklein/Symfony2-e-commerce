@@ -42,6 +42,10 @@ class ECommerceKernel extends Kernel
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle;
         }
 
+        if ('test' == $this->getEnvironment()) {
+            $bundles[] = new Bundle\TestSessionBundle\TestSessionBundle;
+        }
+
         return $bundles;
     }
 
