@@ -25,3 +25,6 @@
 [submodule "src/Bundle/TestSessionBundle"]
 	path = src/Bundle/TestSessionBundle
 	url = git://github.com/knplabs/TestSessionBundle.git
+[submodule "src/Bundle/Sensio/FrameworkExtraBundle"]
+	path = src/Bundle/Sensio/FrameworkExtraBundle
+	url = git://github.com/fabpot/FrameworkExtraBundle.git

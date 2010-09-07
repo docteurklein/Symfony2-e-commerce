@@ -17,19 +17,26 @@ class ECommerceKernel extends Kernel
     public function registerBundles()
     {
         $bundles = array(
+            
+            // Kernel
             new Symfony\Framework\KernelBundle,
+            
+            // Frameowrk
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle,
+            new Bundle\Sensio\FrameworkExtraBundle\FrameworkExtraBundle,
+            
+            // Vendors
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle,
             new Symfony\Bundle\DoctrineBundle\DoctrineBundle,
             new Symfony\Bundle\DoctrineMigrationsBundle\DoctrineMigrationsBundle,
             new Symfony\Bundle\DoctrineMongoDBBundle\DoctrineMongoDBBundle,
             new Symfony\Bundle\ZendBundle\ZendBundle,
 
-            // Security Bundles
+            // Security
             new Bundle\DoctrineUserBundle\DoctrineUserBundle,
             new Bundle\SecurityBundle\SecurityBundle,
 
-            // ECommerce Bundles
+            // ECommerce
             new Application\ECommerceBundle\ECommerceBundle,
             new Bundle\ECommerce\SalesBundle\SalesBundle,
             new Bundle\ECommerce\ShippingBundle\ShippingBundle,

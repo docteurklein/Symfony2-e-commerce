@@ -4,14 +4,18 @@ namespace Application\ECommerceBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+/**
+ * @Route("/")
+ * @Cached(expires="tomorrow")
+ */
 class ECommerceController extends Controller
 {
     /**
-    * @Security(true)
+    * @Route("/:id")
+    * @Template("ECommerceBundle:ECommerce:index")
     */
     public function indexAction()
     {
-        return $this->render('ECommerceBundle:ECommerce:index');
     }
     
     public function dashboardAction()
