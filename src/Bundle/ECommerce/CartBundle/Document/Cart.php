@@ -1,9 +1,9 @@
 <?php
 
-namespace Bundle\ECommerce\CartBundle\Entities;
+namespace Bundle\ECommerce\CartBundle\Document;
 
-use Bundle\ECommerce\CustomerBundle\Entities\Customer;
-use Bundle\ECommerce\ProductBundle\Entities\Product;
+use Bundle\ECommerce\CustomerBundle\Document\Customer;
+use Bundle\ECommerce\ProductBundle\Document\Product;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -12,40 +12,34 @@ use Doctrine\Common\Collections\ArrayCollection;
  * Represents a typical cart of a shopping application.
  *
  * @author Klein Florian
- * @Entity
- * @Table(name="cart")
+ *
+ * @Document(db="symfony2_ecommerce", collection="carts")
  */
 class Cart
 {
     /**
-     * @Column(type="integer")
      * @Id
-     * @GeneratedValue
      */
-    private $id;
+    protected $id;
 
     /**
-     * @Column(length=50, nullable=true)
+     * @String
      */
-    private $payment;
+    protected $payment;
 
     /**
-     * @OneToOne(targetEntity="Bundle\ECommerce\CustomerBundle\Entities\Customer", inversedBy="cart")
-     * @JoinColumn(name="customer_id", referencedColumnName="id")
+     * @ReferenceOne(targetDocument="Bundle\ECommerce\CustomerBundle\Document\Customer")
      */
-    private $customer;
+    protected $customer;
 
     /**
-     * @ManyToMany(targetEntity="Bundle\ECommerce\ProductBundle\Entities\Product", cascade={"persist"})
-     * @JoinTable(name="cart_product",
-            joinColumns={@JoinColumn(name="cart_id", referencedColumnName="id")},
-            inverseJoinColumns={@JoinColumn(name="product_id", referencedColumnName="id")})
+     * @EmbedMany(targetDocument="Bundle\ECommerce\CartBundle\Document\CartProduct")
      */
-    private $products;
+    protected $cart_products = array();
 
     public function __construct()
     {
-        $this->products = new ArrayCollection;
+        $this->cart_products = new ArrayCollection;
     }
     
     public function getId() {
@@ -60,19 +54,14 @@ class Cart
         $this->payment = $payment;
     }
     
-    public function setCustomer(ECommerceCustomer $customer) {
+    public function setCustomer(Customer $customer) {
         if ($this->customer !== $customer) {
             $this->customer = $customer;
-            $customer->setCart($this);
         }
     }
     
     public function removeCustomer() {
-        if ($this->customer !== null) {
-            $customer = $this->customer;
-            $this->customer = null;
-            $customer->removeCart();
-        }
+        $this->customer = null;
     }
     
     public function getCustomer() {
@@ -81,14 +70,14 @@ class Cart
 
     public function getProducts()
     {
-        return $this->products;
+        return $this->cart_products;
     }
 
-    public function addProduct(ECommerceProduct $product) {
-        $this->products[] = $product;
+    public function addProduct(CartProduct $product) {
+        $this->cart_products[] = $product;
     }
 
-    public function removeProduct(ECommerceProduct $product) {
-        return $this->products->removeElement($product);
+    public function removeProduct(CartProduct $product) {
+        return $this->cart_products->removeElement($product);
     }
 }

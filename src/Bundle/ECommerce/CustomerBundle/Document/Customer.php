@@ -1,46 +1,33 @@
 <?php
 
-namespace Bundle\ECommerce\CustomerBundle\Entities;
+namespace Bundle\ECommerce\CustomerBundle\Document;
 
-use Bundle\ECommerce\CartBundle\Entities\Cart;
 
 /**
  * Customer
  * Represents a registered user of a shopping application.
  *
  * @author Klein Florian
- * @Entity
- * @Table(name="customer")
+ *
+ * @Document(db="symfony2_ecommerce", collection="customers")
  */
 class Customer
 {
     /**
-     * @Column(type="integer")
      * @Id
-     * @GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @Column(type="string", length=50)
+     * @String
      */
     private $name;
 
     /**
-     * @OneToOne(targetEntity="Bundle\ECommerce\CartBundle\Entities\Cart", mappedBy="customer", cascade={"persist"})
+     * @ReferenceMany(targetDocument="Bundle\ECommerce\CartBundle\Document\Cart")
      */
     private $cart;
 
-    /**
-     * Example of a one-one self referential association. A mentor can follow
-     * only one customer at the time, while a customer can choose only one
-     * mentor. Not properly appropriate but it works.
-     * 
-     * @OneToOne(targetEntity="Customer", cascade={"persist"})
-     * @JoinColumn(name="mentor_id", referencedColumnName="id")
-     */
-    private $mentor;
-    
     public function getId() {
         return $this->id;
     }
@@ -55,10 +42,7 @@ class Customer
 
     public function setCart(Cart $cart)
     {
-        if ($this->cart !== $cart) {
-            $this->cart = $cart;
-            $cart->setCustomer($this);   
-        }
+        $this->cart = $cart;
     }
     
     public function getCart() {
@@ -67,25 +51,6 @@ class Customer
 
     public function removeCart()
     {
-        if ($this->cart !== null) {
-            $cart = $this->cart;
-            $this->cart = null;
-            $cart->removeCustomer();
-        }
-    }
-
-    public function setMentor(Customer $mentor)
-    {
-        $this->mentor = $mentor;
-    }
-
-    public function removeMentor()
-    {
-        $this->mentor = null;
-    }
-
-    public function getMentor()
-    {
-        return $this->mentor;
+        $this->cart = null;
     }
 }
