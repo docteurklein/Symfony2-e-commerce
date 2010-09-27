@@ -2,9 +2,9 @@
 
 namespace Application\ECommerceBundle\Tests\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Application\ECommerceBundle\Tests\TestCase\TestCase;
 
-class ECommerceControllerTest extends WebTestCase
+class ECommerceControllerTest extends TestCase
 {
     /**
      */
@@ -13,7 +13,7 @@ class ECommerceControllerTest extends WebTestCase
         $client = $this->createClient();
 
         $crawler = $client->request('GET', '/');
-
+        
         $this->assertRegExp('/products/', $client->getResponse()->getContent());
     }
 }

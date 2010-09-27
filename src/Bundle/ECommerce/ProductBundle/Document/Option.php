@@ -28,6 +28,14 @@ class Option
     {
         return (string) $this->getValue();
     }
+    
+    /**
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * @return string

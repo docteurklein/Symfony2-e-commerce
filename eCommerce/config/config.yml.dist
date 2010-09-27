@@ -1,18 +1,19 @@
 parameters: 
     kernel.include_core_classes: false
 
-kernel.config: ~
-kernel.session: ~
+extra.config: 
+  cache:   { annotations: false }
 
-web.config:
+app.config:
   esi: ~
   router: { resource: "%kernel.root_dir%/config/routing.yml" }
+  user: ~
+  templating: ~
 
-web.templating: ~
-
-zend.logger:
-  priority: info
-  path:     %kernel.root_dir%/logs/%kernel.environment%.log
+zend.config:
+  logger:
+    priority: info
+    path:     %kernel.root_dir%/logs/%kernel.environment%.log
 
 doctrine.dbal:
   connections:

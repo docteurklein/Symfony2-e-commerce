@@ -2,10 +2,11 @@
 
 require_once __DIR__.'/../src/autoload.php';
 
-use Symfony\Framework\Kernel;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Routing\Loader\YamlFileLoader as RoutingLoader;
-
 use Symfony\Component\DependencyInjection\Loader\LoaderInterface;
+
+use Symfony\Component\EventDispatcher\EventDispatcher;
 
 class ECommerceKernel extends Kernel
 {
@@ -18,10 +19,7 @@ class ECommerceKernel extends Kernel
     {
         $bundles = array(
             
-            // Kernel
-            new Symfony\Framework\KernelBundle,
-            
-            // Frameowrk
+            // Framework
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle,
             new Bundle\Sensio\FrameworkExtraBundle\FrameworkExtraBundle,
             
@@ -31,6 +29,7 @@ class ECommerceKernel extends Kernel
             new Symfony\Bundle\DoctrineMigrationsBundle\DoctrineMigrationsBundle,
             new Symfony\Bundle\DoctrineMongoDBBundle\DoctrineMongoDBBundle,
             new Symfony\Bundle\ZendBundle\ZendBundle,
+            new Bundle\ConsoleAutocompleteBundle\ConsoleAutocompleteBundle,
 
             // Security
             new Bundle\DoctrineUserBundle\DoctrineUserBundle,
@@ -62,7 +61,6 @@ class ECommerceKernel extends Kernel
             'Application'        => __DIR__.'/../src/Application',
             'Bundle\\ECommerce'  => __DIR__.'/../src/Bundle/ECommerce',
             'Bundle'             => __DIR__.'/../src/Bundle',
-            'Symfony\\Framework' => __DIR__.'/../src/vendor/symfony/src/Symfony/Framework',
             'Symfony\\Bundle'    => __DIR__.'/../src/vendor/symfony/src/Symfony/Bundle',
         );
         

@@ -1,12 +1,13 @@
 imports:
   - { resource: config.yml }
 
-web.config:
+app.config:
   toolbar: false
+  test: {}
 
-zend.logger:
-  priority: debug
-  path:     %kernel.root_dir%/logs/%kernel.environment%.log
+zend.config:
+  logger:
+    priority: debug
 
 doctrine.dbal:
   connections:
@@ -14,6 +15,5 @@ doctrine.dbal:
       driver:               PDOSqlite
       path:                 %kernel.cache_dir%/OrderTests.sqlite
 
-kernel.test: ~
 test_session.config: ~
 

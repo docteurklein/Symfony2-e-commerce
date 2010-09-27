@@ -6,12 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class TestCase extends WebTestCase
 {
-    protected $kernel;
-
-    public function getKernel()
+    public function getKernel(array $options = array())
     {
         if( ! $this->kernel) {
-            $this->kernel = $this->createKernel();
+            $this->kernel = $this->createKernel($options);
             $this->kernel->boot();
         }
 

@@ -1,8 +1,8 @@
 <?php
 
-require_once __DIR__.'/ECommerceKernel.php';
+require_once __DIR__.'/../src/autoload.php';
 
-use Symfony\Framework\Cache\Cache;
+use Symfony\Bundle\FrameworkBundle\Cache\Cache;
 
 class ECommerceCache extends Cache
 {
