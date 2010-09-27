@@ -28,3 +28,6 @@
 [submodule "src/Bundle/Sensio/FrameworkExtraBundle"]
 	path = src/Bundle/Sensio/FrameworkExtraBundle
 	url = git://github.com/fabpot/FrameworkExtraBundle.git
+[submodule "src/Bundle/ConsoleAutocompleteBundle"]
+	path = src/Bundle/ConsoleAutocompleteBundle
+	url = git://github.com/docteurklein/ConsoleAutocompleteBundle.git
