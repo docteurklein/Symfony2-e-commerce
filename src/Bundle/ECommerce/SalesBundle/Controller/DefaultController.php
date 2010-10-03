@@ -8,6 +8,6 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('SalesBundle:Default:index');
+        return $this->render('SalesBundle:Default:index.php');
     }
 }

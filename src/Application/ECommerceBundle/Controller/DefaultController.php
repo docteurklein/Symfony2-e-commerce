@@ -8,7 +8,7 @@ class DefaultController extends Controller
 {
   public function headerAction()
   {
-    $response = $this->render('ECommerceBundle::header', array());
+    $response = $this->render('ECommerceBundle::header.php', array());
     $response->setTtl(10);
     return $response;
   }
@@ -17,7 +17,7 @@ class DefaultController extends Controller
    */
   public function footerAction()
   {
-    $response = $this->render('ECommerceBundle::footer', array());
+    $response = $this->render('ECommerceBundle::footer.php', array());
     $response->setTtl(10);
     return $response;
   }

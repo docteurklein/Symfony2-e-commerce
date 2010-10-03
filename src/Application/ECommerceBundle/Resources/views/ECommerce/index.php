@@ -1,3 +1,3 @@
-<?php $view->extend('ECommerceBundle::layout') ?>
+<?php $view->extend('ECommerceBundle::layout.php') ?>
 
 Hello!

@@ -14,7 +14,7 @@ class ProductController extends Controller
         $dm = $this->container->getDoctrine_Odm_Mongodb_DocumentManagerService();
         
         $products = $dm->find('Bundle\ECommerce\ProductBundle\Document\Product');
-        return $this->render('ProductBundle:Product:index', array('products' => $products));
+        return $this->render('ProductBundle:Product:index.php', array('products' => $products));
     }
 
     public function showAction($id)
@@ -27,7 +27,7 @@ class ProductController extends Controller
             throw new NotFoundHttpException('The product does not exist.');
         }
 
-        return $this->render('ProductBundle:Product:show', array('product' => $product));
+        return $this->render('ProductBundle:Product:show.php', array('product' => $product));
     }
 }
 

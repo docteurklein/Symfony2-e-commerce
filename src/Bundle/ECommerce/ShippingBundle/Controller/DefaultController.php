@@ -8,6 +8,6 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('ShippingBundle:Default:index');
+        return $this->render('ShippingBundle:Default:index.php');
     }
 }

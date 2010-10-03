@@ -12,11 +12,11 @@ class ECommerceController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('ECommerceBundle:ECommerce:index');
+        return $this->render('ECommerceBundle:ECommerce:index.php');
     }
     
     public function dashboardAction()
     {
-        return $this->render('ECommerceBundle:ECommerce:dashboard');
+        return $this->render('ECommerceBundle:ECommerce:dashboard.php');
     }
 }

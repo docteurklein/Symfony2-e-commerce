@@ -1,4 +1,4 @@
-<?php $view->extend('ECommerceBundle::layout') ?>
+<?php $view->extend('ECommerceBundle::layout.php') ?>
 
 <h1><?php echo $product ?></h1>
 <?php foreach($product->getAttributes() as $attribute): ?>

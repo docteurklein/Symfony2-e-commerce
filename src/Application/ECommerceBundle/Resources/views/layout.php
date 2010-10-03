@@ -14,7 +14,7 @@
         <section id="content" class="body">
             <?php $view['slots']->output('_content') ?>
         </section>
-        <?php  echo $view['actions']->render('ECommerceBundle:Default:footer', array(
+        <?php echo $view['actions']->render('ECommerceBundle:Default:footer', array(
           'standalone' => true
         )) ?>
     </body>

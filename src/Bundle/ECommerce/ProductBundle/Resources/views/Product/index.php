@@ -1,4 +1,4 @@
-<?php $view->extend('ECommerceBundle::layout') ?>
+<?php $view->extend('ECommerceBundle::layout.php') ?>
 
 <h1><?php //echo $view->i18n->translate('Products') ?></h1>
 <h1><?php echo ('Products') ?></h1>
