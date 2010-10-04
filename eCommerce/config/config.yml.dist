@@ -7,8 +7,14 @@ extra.config:
 app.config:
   esi: ~
   router: { resource: "%kernel.root_dir%/config/routing.yml" }
-  user: ~
-  templating: ~
+  templating:
+    escaping:       htmlspecialchars
+  user:
+    default_locale: en
+    name:     SYMFONY
+    type:     Native
+    lifetime: 3600
+  translator: ~
 
 zend.config:
   logger:
