@@ -7,7 +7,13 @@ app.config:
   toolbar: true
   intercept_redirects: true
 
+webprofiler.config:
+  toolbar: true
+
 zend.config:
   logger:
     priority: debug
     path:     %kernel.root_dir%/logs/%kernel.environment%.log
+
+doctrine_odm.mongodb:
+  logger_class: Symfony\Bundle\DoctrineMongoDBBundle\Logger\DoctrineMongoDBLogger
