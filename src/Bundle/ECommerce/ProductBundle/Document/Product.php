@@ -28,6 +28,7 @@ class Product
     protected $name;
 
     /**
+     * @var array|ArrayCollection
      * @EmbedMany(targetDocument="Bundle\ECommerce\ProductBundle\Document\Attribute")
      */
     protected $attributes = array();
@@ -57,7 +58,7 @@ class Product
         return $this->sku;
     }
 
-    public function setSKU($name)
+    public function setSKU($sku)
     {
         $this->sku = (string) $sku;
         return $this;
