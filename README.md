@@ -18,14 +18,6 @@ The last command requires Git >= 1.6. Alternatively, you can run `git submodule 
 
 
 
-####Links
+#### Wiki
 
-http://www.doctrine-project.org/blog/mongodb-for-ecommerce
-
-http://ks358168.kimsufi.com/user_payment_experience.png
-
-http://www.cs.toronto.edu/~matz/instruct/csc407/lectures/uml_for_e-commerce.pdf
-
-www.dotnetguru.org/articles/UML/UMLDotNet.pdf
-
-
+http://github.com/docteurklein/Symfony2-e-commerce/wiki
