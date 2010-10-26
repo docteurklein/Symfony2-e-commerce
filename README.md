@@ -20,4 +20,4 @@ The last command requires Git >= 1.6. Alternatively, you can run `git submodule 
 
 #### Wiki
 
-http://github.com/docteurklein/Symfony2-e-commerce/wiki
+[Home](http://github.com/docteurklein/Symfony2-e-commerce/wiki)
