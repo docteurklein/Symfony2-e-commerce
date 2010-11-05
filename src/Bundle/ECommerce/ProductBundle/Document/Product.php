@@ -8,28 +8,28 @@ use Bundle\ECommerce\ProductBundle\Document\Attribute;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @Document(db="symfony2_ecommerce", collection="products")
+ * @mongodb:Document(db="symfony2_ecommerce", collection="products")
  */
 class Product
 {
     /**
-     * @Id
+     * @mongodb:Id
      */
     protected $id;
 
     /**
-     * @String
+     * @mongodb:String
      */
     protected $sku;
 
     /**
-     * @String
+     * @mongodb:String
      */
     protected $name;
 
     /**
      * @var array|ArrayCollection
-     * @EmbedMany(targetDocument="Bundle\ECommerce\ProductBundle\Document\Attribute")
+     * @mongodb:EmbedMany(targetDocument="Bundle\ECommerce\ProductBundle\Document\Attribute")
      */
     protected $attributes = array();
 

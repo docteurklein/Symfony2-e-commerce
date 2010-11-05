@@ -9,22 +9,22 @@ namespace Bundle\ECommerce\CustomerBundle\Document;
  *
  * @author Klein Florian
  *
- * @Document(db="symfony2_ecommerce", collection="customers")
+ * @mongodb:Document(db="symfony2_ecommerce", collection="customers")
  */
 class Customer
 {
     /**
-     * @Id
+     * @mongodb:Id
      */
     private $id;
 
     /**
-     * @String
+     * @mongodb:String
      */
     private $name;
 
     /**
-     * @ReferenceMany(targetDocument="Bundle\ECommerce\CartBundle\Document\Cart")
+     * @mongodb:ReferenceMany(targetDocument="Bundle\ECommerce\CartBundle\Document\Cart")
      */
     private $cart;
 

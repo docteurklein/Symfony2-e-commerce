@@ -9,22 +9,22 @@ use Bundle\ECommerce\ProductBundle\Document\Attribute;
  *
  * @author Klein Florian
  *
- * @EmbeddedDocument
+ * @mongodb:EmbeddedDocument
  */
 class CartProductOption
 {
     /**
-     * @Id
+     * @mongodb:Id
      */
     protected $id;
 
     /**
-     * @String
+     * @mongodb:String
      */
     protected $value;
 
     /**
-     * @EmbedOne(targetDocument="Bundle\ECommerce\ProductBundle\Document\Attribute")
+     * @mongodb:EmbedOne(targetDocument="Bundle\ECommerce\ProductBundle\Document\Attribute")
      */
     protected $attribute;
 

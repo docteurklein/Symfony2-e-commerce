@@ -3,23 +3,23 @@
 namespace Bundle\ECommerce\ProductBundle\Document;
 
 /**
- * @Document(db="symfony2_ecommerce", collection="options")
+ * @mongodb:Document(db="symfony2_ecommerce", collection="options")
  */
 class Option
 {
     /**
-     * @Id
+     * @mongodb:Id
      */
     protected $id;
 
     /**
-     * @String
+     * @mongodb:String
      * @var string
      */
     protected $name;
 
     /**
-     * @String
+     * @mongodb:String
      * @var string
      */
     protected $value;

@@ -13,20 +13,20 @@ use Bundle\ECommerce\ProductBundle\Document\Product;
  * Represents an order.
  *
  * @author Klein Florian
- * @Entity
- * @Table(name="sales_order")
- * @HasLifecycleCallbacks
+ * @orm:Entity
+ * @orm:Table(name="sales_order")
+ * @orm:HasLifecycleCallbacks
  */
 class Order
 {
     /**
-     * @Id @Column(type="integer")
-     * @GeneratedValue(strategy="AUTO")
+     * @orm:Id @orm:Column(type="integer")
+     * @orm:GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @Column(type="string")
+     * @orm:Column(type="string")
      */
     private $product_id;
 

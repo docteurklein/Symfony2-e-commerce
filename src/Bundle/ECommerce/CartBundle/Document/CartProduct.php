@@ -11,22 +11,22 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @author Klein Florian
  *
- * @EmbeddedDocument
+ * @mongodb:EmbeddedDocument
  */
 class CartProduct
 {
     /**
-     * @Id
+     * @mongodb:Id
      */
     protected $id;
 
     /**
-     * @ReferenceOne(targetDocument="Bundle\ECommerce\ProductBundle\Document\Product")
+     * @mongodb:ReferenceOne(targetDocument="Bundle\ECommerce\ProductBundle\Document\Product")
      */
     protected $product;
 
     /**
-     * @EmbedMany(targetDocument="Bundle\ECommerce\CartBundle\Document\CartProductOption")
+     * @mongodb:EmbedMany(targetDocument="Bundle\ECommerce\CartBundle\Document\CartProductOption")
      */
     protected $options = array();
 

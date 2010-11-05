@@ -7,22 +7,22 @@ use Bundle\ECommerce\ProductBundle\Document\Product;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @Document(db="symfony2_ecommerce", collection="categories")
+ * @mongodb:Document(db="symfony2_ecommerce", collection="categories")
  */
 class Category
 {
     /**
-     * @Id
+     * @mongodb:Id
      */
     protected $id;
 
     /**
-     * @String
+     * @mongodb:String
      */
     protected $name;
 
     /**
-     * @ReferenceMany(targetDocument="Bundle\ECommerce\ProductBundle\Document\Product")
+     * @mongodb:ReferenceMany(targetDocument="Bundle\ECommerce\ProductBundle\Document\Product")
      */
     protected $products = array();
 

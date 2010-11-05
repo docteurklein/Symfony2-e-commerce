@@ -7,22 +7,22 @@ use Bundle\ECommerce\ProductBundle\Document\Option;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @Document(db="symfony2_ecommerce", collection="attributes")
+ * @mongodb:Document(db="symfony2_ecommerce", collection="attributes")
  */
 class Attribute
 {
     /**
-     * @Id
+     * @mongodb:Id
      */
     protected $id;
 
     /**
-     * @String
+     * @mongodb:String
      */
     protected $name;
 
     /**
-     * @EmbedMany(targetDocument="Bundle\ECommerce\ProductBundle\Document\Option")
+     * @mongodb:EmbedMany(targetDocument="Bundle\ECommerce\ProductBundle\Document\Option")
      */
     protected $options = array();
 

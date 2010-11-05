@@ -13,27 +13,27 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @author Klein Florian
  *
- * @Document(db="symfony2_ecommerce", collection="carts")
+ * @mongodb:Document(db="symfony2_ecommerce", collection="carts")
  */
 class Cart
 {
     /**
-     * @Id
+     * @mongodb:Id
      */
     protected $id;
 
     /**
-     * @String
+     * @mongodb:String
      */
     protected $payment;
 
     /**
-     * @ReferenceOne(targetDocument="Bundle\ECommerce\CustomerBundle\Document\Customer")
+     * @mongodb:ReferenceOne(targetDocument="Bundle\ECommerce\CustomerBundle\Document\Customer")
      */
     protected $customer;
 
     /**
-     * @EmbedMany(targetDocument="Bundle\ECommerce\CartBundle\Document\CartProduct")
+     * @mongodb:EmbedMany(targetDocument="Bundle\ECommerce\CartBundle\Document\CartProduct")
      */
     protected $cart_products = array();
 

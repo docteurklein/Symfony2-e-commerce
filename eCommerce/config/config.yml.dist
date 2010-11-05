@@ -1,6 +1,22 @@
 parameters: 
     kernel.include_core_classes: false
 
+security.config:
+  providers:
+    main:
+      users:
+        foo: { password: bar, roles: ROLE_USER }
+  firewalls:
+    login: { pattern: /login, security: false }
+    login_check: { pattern: /_login_check, security: false }
+    main:
+      pattern:    /.*
+      form-login: true
+      http_basic: true
+      logout:     true
+  access_control:
+    - { path: /.*, role: ROLE_USER }
+
 extra.config: 
   cache:   { annotations: false }
 
