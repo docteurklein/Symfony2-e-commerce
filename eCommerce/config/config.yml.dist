@@ -5,17 +5,20 @@ security.config:
   providers:
     main:
       users:
-        foo: { password: bar, roles: ROLE_USER }
+        florian: { password: nairolf, roles: ROLE_USER }
   firewalls:
-    login: { pattern: /login, security: false }
-    login_check: { pattern: /_login_check, security: false }
+    login: { pattern: /login, security: true, anonymous: true }
+    login_check: { pattern: /login_check, security: true, anonymous: true }
+    profiler: { pattern: /_profiler.*, security: true, anonymous: true }
     main:
-      pattern:    /.*
-      form-login: true
-      http_basic: true
-      logout:     true
+      pattern:    .*
+      form_login: { check_path: /login_check }
+      logout:     { path: /logout, target: /login }
+      anonymous:  true
   access_control:
-    - { path: /.*, role: ROLE_USER }
+    - { path: /login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: /login_check, role: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: .*, role: [ ROLE_USER, IS_AUTHENTICATED_ANONYMOUSLY ] }
 
 extra.config: 
   cache:   { annotations: false }

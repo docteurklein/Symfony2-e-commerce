@@ -33,7 +33,6 @@ class ECommerceKernel extends Kernel
 
             // Security
             new Bundle\DoctrineUserBundle\DoctrineUserBundle,
-            new Bundle\SecurityBundle\SecurityBundle,
 
             // ECommerce
             new Application\ECommerceBundle\ECommerceBundle,
