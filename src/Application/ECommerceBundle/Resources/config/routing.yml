@@ -3,5 +3,8 @@ dashboard:
   defaults: { _controller: ECommerceBundle:ECommerce:dashboard }
 
 Product:
-    resource: ProductBundle/Resources/config/routing.yml
+  resource: ProductBundle/Resources/config/routing.yml
+
+Customer:
+  resource: CustomerBundle/Resources/config/routing.xml
 

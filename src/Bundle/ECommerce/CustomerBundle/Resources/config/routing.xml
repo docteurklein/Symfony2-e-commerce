@@ -4,4 +4,13 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.symfony-project.org/schema/routing http://www.symfony-project.org/schema/routing/routing-1.0.xsd">
 
+    <route id="ecommerce_customer_list" pattern="/customer">
+        <default key="_controller">CustomerBundle:Default:index</default>
+        <requirement key="_method">GET</requirement>
+    </route>
+
+    <route id="ecommerce_customer_show" pattern="/customer/:id">
+        <default key="_controller">CustomerBundle:Default:show</default>
+        <requirement key="_method">GET</requirement>
+    </route>
 </routes>

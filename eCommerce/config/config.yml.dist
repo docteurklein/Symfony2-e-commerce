@@ -8,11 +8,11 @@ security.config:
         florian: { password: nairolf, roles: ROLE_USER }
   firewalls:
     login: { pattern: /login, security: true, anonymous: true }
-    login_check: { pattern: /login_check, security: true, anonymous: true }
+    login_check: { pattern: /login_check, security: true, anonymous: true, form_login: true }
     profiler: { pattern: /_profiler.*, security: true, anonymous: true }
     main:
       pattern:    .*
-      form_login: { check_path: /login_check }
+      form_login: true
       logout:     { path: /logout, target: /login }
       anonymous:  true
   access_control:
