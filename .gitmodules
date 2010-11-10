@@ -31,3 +31,12 @@
 [submodule "src/Bundle/ConsoleAutocompleteBundle"]
 	path = src/Bundle/ConsoleAutocompleteBundle
 	url = git://github.com/docteurklein/ConsoleAutocompleteBundle.git
+[submodule "src/Bundle/DoctrineExtensionsBundle"]
+	path = src/Bundle/DoctrineExtensionsBundle
+	url = git://github.com/stof/DoctrineExtensionsBundle.git
+[submodule "src/vendor/doctrine-extensions"]
+	path = src/vendor/doctrine-extensions
+	url = git://github.com/docteurklein/DoctrineExtensions.git
+[submodule "src/vendor/doctrine-data-fixtures"]
+	path = src/vendor/doctrine-data-fixtures
+	url = git://github.com/doctrine/data-fixtures.git
