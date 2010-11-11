@@ -20,3 +20,7 @@ homepage:
 
 eCommerce:
     resource: ECommerceBundle/Resources/config/routing.yml
+
+contact:
+    resource: ContactBundle/Resources/config/routing.xml
+

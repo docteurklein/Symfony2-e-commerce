@@ -31,3 +31,6 @@
 [submodule "src/Bundle/ConsoleAutocompleteBundle"]
 	path = src/Bundle/ConsoleAutocompleteBundle
 	url = git://github.com/docteurklein/ConsoleAutocompleteBundle.git
+[submodule "src/vendor/twig"]
+	path = src/vendor/twig
+	url = git://github.com/fabpot/Twig.git

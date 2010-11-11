@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://www.symfony-project.org/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.symfony-project.org/schema/dic/services http://www.symfony-project.org/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="contact.form.name">Contact</parameter>
+        <parameter key="contact.form.class">Bundle\ContactBundle\Form\ContactForm</parameter>
+    </parameters>
+
+    <services>
+        <service id="contact.form" class="%contact.form.class%">
+            <argument>%contact.form.name%</argument>
+            <argument></argument>
+            <argument type="service" id="validator" />
+        </service>
+    </services>
+</container>
