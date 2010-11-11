@@ -23,14 +23,17 @@ class ECommerceKernel extends Kernel
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle,
             //new Bundle\Sensio\FrameworkExtraBundle\FrameworkExtraBundle,
             
-            // Vendors
+            // Core 
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle,
             new Symfony\Bundle\DoctrineBundle\DoctrineBundle,
             new Symfony\Bundle\DoctrineMigrationsBundle\DoctrineMigrationsBundle,
             new Symfony\Bundle\DoctrineMongoDBBundle\DoctrineMongoDBBundle,
             new Symfony\Bundle\ZendBundle\ZendBundle,
             new Symfony\Bundle\TwigBundle\TwigBundle,
+
+            // Third party
             new Bundle\ConsoleAutocompleteBundle\ConsoleAutocompleteBundle,
+            new Bundle\DoctrineExtensionsBundle\DoctrineExtensionsBundle(),
 
             // Security
             new Bundle\DoctrineUserBundle\DoctrineUserBundle,

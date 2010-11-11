@@ -8,6 +8,7 @@ use Bundle\ECommerce\ProductBundle\Document\Product;
 use Bundle\ECommerce\ProductBundle\Document\Attribute;
 use Bundle\ECommerce\ProductBundle\Document\Option;
 
+
 class ProductTest extends TestCase
 {
     public function testProduct()

@@ -1,5 +1,5 @@
 parameters: 
-    kernel.include_core_classes: false
+  kernel.include_core_classes: false
 
 security.config:
   providers:
@@ -8,19 +8,20 @@ security.config:
         florian: { password: nairolf, roles: ROLE_USER }
   firewalls:
     login: { pattern: /login, security: true, anonymous: true }
-    login_check: { pattern: /login_check, security: true, anonymous: true }
     profiler: { pattern: /_profiler.*, security: true, anonymous: true }
+    login_check: { pattern: /login_check, security: true, anonymous: true, form_login: true }
     main:
-      pattern:    .*
-      form_login: { check_path: /login_check }
-      logout:     { path: /logout, target: /login }
+      pattern:    /.*
+      form_login: true
       anonymous:  true
+      logout:     { path: /logout, target: /login }
   access_control:
     - { path: /login, role: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: /login_check, role: IS_AUTHENTICATED_ANONYMOUSLY }
-    - { path: .*, role: [ ROLE_USER, IS_AUTHENTICATED_ANONYMOUSLY ] }
+    - { path: /customer.*, role: ROLE_USER }
+    - { path: /.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
 
-extra.config: 
+extra.config:
   cache:   { annotations: false }
 
 app.config:
