@@ -14,11 +14,18 @@ class ProductTest extends TestCase
     public function testProduct()
     {
         $dm = $this->getDm();
+        $this->loadMongoDBDataFixtures();
 
-        $product = $this->buildProduct();
+        $product = $dm->getRepository('Bundle\ECommerce\ProductBundle\Document\Product')->findAll()->getSingleResult();
+        
+        //$this->assertTrue($product->getSlug() == 'a-super-product');
+
+        $product->setName('a test product');
+        //$this->assertTrue($product->getSlug() == 'a-super-product');
 
         $dm->persist($product);
         $dm->flush();
+        //$this->assertTrue($product->getSlug() == 'a-test-product');
 
         $product_ref = $dm->find('Bundle\ECommerce\ProductBundle\Document\Product', $product->getId());
 

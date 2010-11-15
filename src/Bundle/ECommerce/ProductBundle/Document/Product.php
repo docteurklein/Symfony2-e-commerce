@@ -24,8 +24,15 @@ class Product
 
     /**
      * @mongodb:String
+     * @Sluggable:Sluggable
      */
     protected $name;
+
+    /**
+     * @mongodb:String
+     * @Sluggable:Slug
+     */
+    protected $slug;
 
     /**
      * @var array|ArrayCollection
@@ -73,6 +80,11 @@ class Product
     {
         $this->name = (string) $name;
         return $this;
+    }
+
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
     public function getOrders()

@@ -1,11 +1,20 @@
-<form action="{% path 'contact_index' %}" {{ form|render_enctype }} method="POST" class="doctrine_user_user_new">
+<form action="{% route 'contact_index' %}" method="POST" class="contact">
+
+    {% block errors %}
+        {% if errors %}
+        <ul>
+            {% for error in errors %}
+                <li>{% trans error.0 with error.1 from validators %}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% endblock errors %}
     <ul>
-        {% for field in form.getVisibleFieldsRecursively() %}
-            {{ field|render }}
-        {% endfor %}
+        {{ form.email }}
+        {{ form.subject }}
+        {{ form.message }}
         <li>
-            <input type="submit" value="{% trans 'Create user' from 'DoctrineUserBundle' %}" />
+            <input type="submit" value="{% trans 'Send' from 'ContactBundle' %}" />
         </li>
     </ul>
-    {{ form|render_hidden }}
 </form>

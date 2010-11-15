@@ -15,8 +15,9 @@ class CartTest extends TestCase
     public function testCart()
     {
         $dm = $this->getDm();
+        $this->loadMongoDBDataFixtures();
 
-        $cart = $this->buildCart();
+        $cart = $dm->getRepository('Bundle\ECommerce\CartBundle\Document\Cart')->findAll()->getSingleResult();
 
         $dm->persist($cart);
         $dm->flush();

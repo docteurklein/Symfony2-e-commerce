@@ -5,6 +5,7 @@ require_once __DIR__.'/../src/autoload.php';
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Routing\Loader\YamlFileLoader as RoutingLoader;
 use Symfony\Component\DependencyInjection\Loader\LoaderInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
@@ -64,10 +65,10 @@ class ECommerceKernel extends Kernel
     public function registerBundleDirs()
     {
         $bundles = array(
-            'Application'        => __DIR__.'/../src/Application',
-            'Bundle\\ECommerce'  => __DIR__.'/../src/Bundle/ECommerce',
-            'Bundle'             => __DIR__.'/../src/Bundle',
             'Symfony\\Bundle'    => __DIR__.'/../src/vendor/symfony/src/Symfony/Bundle',
+            'Bundle'             => __DIR__.'/../src/Bundle',
+            'Bundle\\ECommerce'  => __DIR__.'/../src/Bundle/ECommerce',
+            'Application'        => __DIR__.'/../src/Application',
         );
         
         return $bundles;
@@ -83,6 +84,11 @@ class ECommerceKernel extends Kernel
         $loader = new RoutingLoader($this->getBundleDirs());
 
         return $loader->load(__DIR__.'/config/routing.yml');
+    }
+
+    public function handleAndSend()
+    {
+        return $this->handle(new Request)->send();
     }
 }
 

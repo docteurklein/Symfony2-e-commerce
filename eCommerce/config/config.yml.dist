@@ -21,15 +21,15 @@ security.config:
     - { path: /customer.*, role: ROLE_USER }
     - { path: /.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
 
-extra.config:
-  cache:   { annotations: false }
+#extra.config:
+  #cache:   { annotations: false }
 
 app.config:
   esi: ~
   router: { resource: "%kernel.root_dir%/config/routing.yml" }
   templating:
     escaping:       htmlspecialchars
-  user:
+  session:
     default_locale: en
     name:     SYMFONY
     type:     Native

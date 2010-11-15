@@ -31,6 +31,7 @@ class LoadProductData implements FixtureInterface
 
         $product = new Product;
         $product->addAttribute($attribute);
+        $product->setName('a super product');
 
         return $product;
     }

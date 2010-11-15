@@ -9,4 +9,4 @@ if (!in_array(@$_SERVER['REMOTE_ADDR'], array('127.0.0.1', '::1'))) {
 require_once __DIR__.'/../eCommerce/ECommerceCache.php';
 
 $kernel = new ECommerceCache(new ECommerceKernel('dev', true));
-$kernel->handle()->send();
+$kernel->handleAndSend();

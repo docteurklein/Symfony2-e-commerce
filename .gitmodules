@@ -36,7 +36,7 @@
 	url = git://github.com/fabpot/Twig.git
 [submodule "src/Bundle/DoctrineExtensionsBundle"]
 	path = src/Bundle/DoctrineExtensionsBundle
-	url = git://github.com/stof/DoctrineExtensionsBundle.git
+	url = git://github.com/docteurklein/DoctrineExtensionsBundle.git
 [submodule "src/vendor/doctrine-extensions"]
 	path = src/vendor/doctrine-extensions
 	url = git://github.com/docteurklein/DoctrineExtensions.git
