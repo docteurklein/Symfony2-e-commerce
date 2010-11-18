@@ -22,8 +22,7 @@ class ECommerceKernel extends Kernel
             
             // Framework
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle,
-            //new Bundle\Sensio\FrameworkExtraBundle\FrameworkExtraBundle,
-            
+
             // Core 
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle,
             new Symfony\Bundle\DoctrineBundle\DoctrineBundle,
@@ -35,9 +34,9 @@ class ECommerceKernel extends Kernel
             // Third party
             new Bundle\ConsoleAutocompleteBundle\ConsoleAutocompleteBundle,
             new Bundle\DoctrineExtensionsBundle\DoctrineExtensionsBundle(),
-
-            // Security
             new Bundle\DoctrineUserBundle\DoctrineUserBundle,
+            new Bundle\ContactBundle\ContactBundle,
+            //new Bundle\Sensio\FrameworkExtraBundle\FrameworkExtraBundle,
 
             // ECommerce
             new Application\ECommerceBundle\ECommerceBundle,
@@ -47,8 +46,6 @@ class ECommerceKernel extends Kernel
             new Bundle\ECommerce\CustomerBundle\CustomerBundle,
             new Bundle\ECommerce\CartBundle\CartBundle,
 
-            // Contact
-            new Bundle\ContactBundle\ContactBundle,
         );
 
         if ($this->isDebug()) {

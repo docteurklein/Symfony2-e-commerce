@@ -1,6 +1,12 @@
 parameters: 
   kernel.include_core_classes: false
 
+doctrine_extensions.config:
+  sluggable.mongodb: ~
+  sluggable.orm: ~
+  translatable: ~
+  tree: ~
+
 security.config:
   providers:
     main:
