@@ -4,7 +4,7 @@ namespace Bundle\ContactBundle\Document;
 
 
 /**
- * @mongodb:Document(db="symfony2_ecommerce", collection="products")
+ * @mongodb:Document(db="symfony2_ecommerce", collection="contacts")
  */
 class Contact
 {
@@ -15,6 +15,7 @@ class Contact
 
     /**
      * @mongodb:String
+     * @validation:NotBlank()
      */
     protected $subject;
 
@@ -26,6 +27,7 @@ class Contact
 
     /**
      * @mongodb:String
+     * @validation:NotBlank()
      */
     protected $message;
 

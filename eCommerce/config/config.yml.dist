@@ -35,6 +35,8 @@ app.config:
     type:     Native
     lifetime: 3600
   translator: ~
+  validation:
+    enabled: true
 
 zend.config:
   logger:

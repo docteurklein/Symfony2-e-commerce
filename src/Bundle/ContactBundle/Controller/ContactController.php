@@ -11,21 +11,25 @@ class ContactController extends Controller
 {
     public function contactAction()
     {
-        $form = $this['contact.form'];
+        $form = $this->get('contact.form');
 
         $contact = new Contact;
         $form->setData($contact);
 
-        if ($this['request']->getMethod() == 'POST') {
-            $form->bind($this->getRequest()->getParameter($form->getName()));
+        if ($this->get('request')->getMethod() == 'POST') {
+            $form->bind($this->get('request')->get($form->getName()));
 
-            if ($form->isValid()) {
-                $dm = $this['doctrine.odm.mongodb.document_manager'];
+            if ($form->isValid()) { // always valid ?! WTF
+                $dm = $this->get('doctrine.odm.mongodb.document_manager');
                 $dm->persist($contact);
                 $dm->flush();
+                // do something, ie: send an email
+                // notify an event
+                
+                return $this->redirect($this->generateUrl('contact_index'));
             }
         }
         
-        return $this->render('ContactBundle:Contact:form.php', array('form' => $this['templating.form']->get($form)));
+        return $this->render('ContactBundle:Contact:form.php', array('form' => $form));
     }
 }

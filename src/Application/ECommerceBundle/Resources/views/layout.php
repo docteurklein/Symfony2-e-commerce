@@ -3,9 +3,13 @@
     <head>
         <meta charset="utf-8" />
         
-        <link href="<?php echo $view['assets']->getUrl('bundles/ecommerce/css/layout.css') ?>" rel="stylesheet" type="text/css" />
-        
         <title><?php $view['slots']->output('title', 'Symfony e-Commerce Solution') ?></title>
+        <meta content="<?php $view['slots']->output('description') ?>" name="description">
+        <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+        
+        <?php $view['assets']->setVersion('1') ?>
+        <?php $view['stylesheets']->add('bundles/ecommerce/css/layout.css') ?>
+        <?php echo $view['stylesheets'] ?>
     </head>
     <body>
         <?php echo $view['actions']->render('ECommerceBundle:Default:header', array(

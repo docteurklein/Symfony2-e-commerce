@@ -11,7 +11,7 @@ class ProductController extends Controller
 {
     public function indexAction()
     {
-        $dm = $this['doctrine.odm.mongodb.documentManager'];
+        $dm = $this->get('doctrine.odm.mongodb.documentManager');
         
         $products = $dm->find('Bundle\ECommerce\ProductBundle\Document\Product');
         return $this->render('ProductBundle:Product:index.php', array('products' => $products));
@@ -19,7 +19,7 @@ class ProductController extends Controller
 
     public function showAction($id)
     {
-        $dm = $this['doctrine.odm.mongodb.documentManager'];
+        $dm = $this->get('doctrine.odm.mongodb.documentManager');
         
         $product = $dm->getRepository('Bundle\ECommerce\ProductBundle\Document\Product')->find($id);
 
