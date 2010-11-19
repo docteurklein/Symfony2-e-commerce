@@ -24,13 +24,13 @@ class Product
 
     /**
      * @mongodb:String
-     * @Sluggable:Sluggable
+     * @gedmo:Sluggable
      */
     protected $name;
 
     /**
      * @mongodb:String
-     * @Sluggable:Slug
+     * @gedmo:Slug(unique=false)
      */
     protected $slug;
 
