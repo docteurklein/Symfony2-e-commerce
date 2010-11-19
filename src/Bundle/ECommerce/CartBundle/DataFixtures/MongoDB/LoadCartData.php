@@ -28,22 +28,23 @@ class LoadCartData implements FixtureInterface
         $cart = new Cart;
         
         $product_data = new LoadProductData;
-        $product = $product_data->buildProduct($dm);
+        foreach($products = $product_data->getProducts() as $product)
+        {
+            $cart_product = new CartProduct;
+            $cart_product->setProduct($product);
 
-        $dm->persist($product);
-        $dm->flush();
+            foreach($product->getAttributes() as $attribute)
+            {
+                $option = new CartProductOption;
+                $option->setAttribute($attribute);
+                $choices = $attribute->getOptions();
+                $option->setValue($choices[2]);
 
-        $cart_product = new CartProduct;
-        $cart_product->setProduct($product);
+                $cart_product->addOption($option);
+            }
 
-        $option = new CartProductOption;
-        $option->setAttribute($product->getAttributes()->get(0));
-        $option->setValue('blue');
-
-        $cart_product->addOption($option);
-
-        $cart->addProduct($cart_product);
-
+            $cart->addCartProduct($cart_product);
+        }
         return $cart;
     }
 }

@@ -4,5 +4,5 @@ products:
   defaults: { _controller: ProductBundle:Product:index }
 
 product_show:
-  pattern:  /product/:id
+  pattern:  /product/:slug
   defaults: { _controller: ProductBundle:Product:show }

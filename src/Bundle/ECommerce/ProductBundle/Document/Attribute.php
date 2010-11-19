@@ -7,7 +7,7 @@ use Bundle\ECommerce\ProductBundle\Document\Option;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @mongodb:Document(db="symfony2_ecommerce", collection="attributes")
+ * @mongodb:Document(collection="attributes")
  */
 class Attribute
 {
@@ -55,6 +55,13 @@ class Attribute
     public function getOptions()
     {
         return $this->options;
+    }
+
+    public function setOptions(ArrayCollection $options)
+    {
+        $this->options = $options;
+
+        return $this;
     }
 
     public function addOption(Option $option)

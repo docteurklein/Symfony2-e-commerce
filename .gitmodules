@@ -21,7 +21,7 @@
 	url = git://github.com/docteurklein/mongodb-odm.git
 [submodule "src/Bundle/SecurityBundle"]
 	path = src/Bundle/SecurityBundle
-	url = git://github.com/docteurklein/SecurityBundle.git
+	url = git://github.com/knplabs/SecurityBundle.git
 [submodule "src/Bundle/TestSessionBundle"]
 	path = src/Bundle/TestSessionBundle
 	url = git://github.com/knplabs/TestSessionBundle.git

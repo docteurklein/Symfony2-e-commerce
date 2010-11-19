@@ -3,7 +3,7 @@
 namespace Bundle\ECommerce\ProductBundle\Document;
 
 /**
- * @mongodb:Document(db="symfony2_ecommerce", collection="options")
+ * @mongodb:Document(collection="options")
  */
 class Option
 {

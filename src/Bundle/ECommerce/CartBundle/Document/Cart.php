@@ -68,16 +68,16 @@ class Cart
         return $this->customer;
     }
 
-    public function getProducts()
+    public function getCartProducts()
     {
         return $this->cart_products;
     }
 
-    public function addProduct(CartProduct $product) {
+    public function addCartProduct(CartProduct $product) {
         $this->cart_products[] = $product;
     }
 
-    public function removeProduct(CartProduct $product) {
+    public function removeCartProduct(CartProduct $product) {
         return $this->cart_products->removeElement($product);
     }
 }

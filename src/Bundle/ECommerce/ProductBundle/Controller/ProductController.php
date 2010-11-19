@@ -11,17 +11,13 @@ class ProductController extends Controller
 {
     public function indexAction()
     {
-        $dm = $this->get('doctrine.odm.mongodb.documentManager');
-        
-        $products = $dm->find('Bundle\ECommerce\ProductBundle\Document\Product');
+        $products = $this->get('ecommerce.repository.product')->find();
         return $this->render('ProductBundle:Product:index.php', array('products' => $products));
     }
 
-    public function showAction($id)
+    public function showAction($slug)
     {
-        $dm = $this->get('doctrine.odm.mongodb.documentManager');
-        
-        $product = $dm->getRepository('Bundle\ECommerce\ProductBundle\Document\Product')->find($id);
+        $product = $this->get('ecommerce.repository.product')->findOneBySlug($slug);
 
         if( ! $product) {
             throw new NotFoundHttpException('The product does not exist.');

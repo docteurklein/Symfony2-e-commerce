@@ -7,7 +7,7 @@ use Bundle\ECommerce\ProductBundle\Document\Product;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @mongodb:Document(db="symfony2_ecommerce", collection="categories")
+ * @mongodb:Document(collection="categories")
  */
 class Category
 {

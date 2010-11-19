@@ -8,7 +8,7 @@ use Bundle\ECommerce\ProductBundle\Document\Attribute;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @mongodb:Document(db="symfony2_ecommerce", collection="products")
+ * @mongodb:Document(collection="products", repositoryClass="Bundle\ECommerce\ProductBundle\Document\ProductRepository")
  */
 class Product
 {
@@ -102,6 +102,13 @@ class Product
         if (!$this->hasAttribute($attribute)) {
             $this->attributes[] = $attribute;
         }
+
+        return $this;
+    }
+
+    public function setAttributes(ArrayCollection $attributes)
+    {
+        $this->attributes = $attributes;
 
         return $this;
     }

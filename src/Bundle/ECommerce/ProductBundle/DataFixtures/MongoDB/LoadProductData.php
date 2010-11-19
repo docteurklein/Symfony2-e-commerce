@@ -4,6 +4,7 @@ namespace Bundle\ECommerce\ProductBundle\DataFixtures\MongoDB;
 
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use Bundle\ECommerce\ProductBundle\Document\Product;
 use Bundle\ECommerce\ProductBundle\Document\Option;
@@ -14,25 +15,59 @@ class LoadProductData implements FixtureInterface
 {
     public function load($manager)
     {
-        $product = $this->buildProduct($manager);
-        
-        $manager->persist($product);
-        $manager->flush();
+        return $this->buildProducts($manager);
     }
     
-    public function buildProduct(DocumentManager $dm)
+    public function getProducts()
     {
-        $option = new Option;
-        $option->setValue('blue');
+        $products = array();
+        for($i = 1; $i <= 200; $i++)
+        {
+            $product = new Product;
+            $product->setAttributes($this->getAttributes());
+            $product->setName('a super product '.$i);
+            $products[] = $product;
+        }
 
-        $attribute = new Attribute;
-        $attribute->setName('color');
-        $attribute->addOption($option);
+        return $products;
+    }
 
-        $product = new Product;
-        $product->addAttribute($attribute);
-        $product->setName('a super product');
+    public function buildProducts(DocumentManager $dm)
+    {
+        foreach($this->getProducts($dm) as $product)
+        {
+            $dm->persist($product);
+        }
+        $dm->flush();
+    }
 
-        return $product;
+    protected function getAttributes()
+    {
+        $attributes = new ArrayCollection;
+        for($i = 1; $i < 5; $i++)
+        {
+            $attribute = new Attribute;
+            $attribute->setName('color '.$i);
+            $attribute->setOptions($this->getOptions());
+
+            $attributes[] = $attribute;
+        }
+        
+        return $attributes;
+    }
+
+    protected function getOptions()
+    {
+        $options = new ArrayCollection;
+        for($i = 0; $i < 4; $i++)
+        {
+            $choices = array('green', 'yellow', 'red', 'gold');
+            $option = new Option;
+            $option->setValue($choices[$i]);
+
+            $options[] = $option;
+        }
+
+        return $options;
     }
 }
