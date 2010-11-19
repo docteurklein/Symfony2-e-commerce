@@ -12,7 +12,7 @@
 	url = git://github.com/knplabs/DoctrineUserBundle.git
 [submodule "src/vendor/symfony"]
 	path = src/vendor/symfony
-	url = git://github.com/symfony/symfony.git
+	url = git://github.com/fabpot/symfony.git
 [submodule "src/vendor/zend"]
 	path = src/vendor/zend
 	url = http://github.com/zendframework/zf2.git
