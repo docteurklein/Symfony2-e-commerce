@@ -16,20 +16,16 @@ class ProductTest extends TestCase
         $dm = $this->getDm();
         $this->loadMongoDBDataFixtures();
 
-        $product = $dm->getRepository('Bundle\ECommerce\ProductBundle\Document\Product')->findAll()->getSingleResult();
-        
-        //$this->assertTrue($product->getSlug() == 'a-super-product');
-
+        $product = $this->getKernel()->getContainer()->get('ecommerce.repository.product')->findOneBySlug('a super product');
+        var_dump($this->getKernel()->getContainer()->get('ecommerce.repository.product')->find()->getPrimaryKeys());
+        $this->assertTrue($product->getSlug() == 'a-super-product');
         $product->setName('a test product');
-        //$this->assertTrue($product->getSlug() == 'a-super-product');
-
+        $this->assertTrue($product->getSlug() == 'a-super-product');
         $dm->persist($product);
         $dm->flush();
-        //$this->assertTrue($product->getSlug() == 'a-test-product');
-
-        $product_ref = $dm->find('Bundle\ECommerce\ProductBundle\Document\Product', $product->getId());
-
-        $this->assertTrue($product_ref->getAttributes()->get(0)->getOptions()->get(0)->getValue() == 'blue');
+        $this->assertTrue($product->getSlug() == 'a-test-product');
+        $product_ref = $this->getKernel()->getContainer()->get('ecommerce.repository.product')->find($product->getId());
+        $this->assertTrue($product_ref->getAttributes()->get(0)->getOptions()->get(0)->getValue() == 'green');
     }
 }
 

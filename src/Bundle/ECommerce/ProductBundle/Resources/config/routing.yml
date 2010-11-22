@@ -6,3 +6,8 @@ products:
 product_show:
   pattern:  /product/:slug
   defaults: { _controller: ProductBundle:Product:show }
+
+category_show:
+  pattern:  /category/:slug
+  defaults: { _controller: ProductBundle:Category:show }
+

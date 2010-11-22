@@ -21,7 +21,7 @@ class LoadProductData implements FixtureInterface
     public function getProducts()
     {
         $products = array();
-        for($i = 1; $i <= 200; $i++)
+        for($i = 1; $i <= 20; $i++)
         {
             $product = new Product;
             $product->setAttributes($this->getAttributes());

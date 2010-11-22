@@ -6,15 +6,28 @@
 
     <parameters>
         <parameter key="ecommerce.model.product.class">Bundle\ECommerce\ProductBundle\Document\Product</parameter>
+        <parameter key="ecommerce.model.category.class">Bundle\ECommerce\ProductBundle\Document\Category</parameter>
+        <parameter key="ecommerce.menu.category.class">Bundle\ECommerce\ECommerceBundle\Menu\Category</parameter>
+        <parameter key="ecommerce.menu.item.category.class">Bundle\MenuBundle\MenuItem</parameter>
     </parameters>
 
     <services>
-
         <service id="ecommerce.repository.product" class="Bundle\ECommerce\ProductBundle\ProductBundle" shared="true" factory-method="getRepository">
             <argument type="service" id="doctrine.odm.mongodb.document_manager" />
             <argument>%ecommerce.model.product.class%</argument>
         </service>
 
+        <service id="ecommerce.repository.category" class="Bundle\ECommerce\ProductBundle\ProductBundle" shared="true" factory-method="getRepository">
+            <argument type="service" id="doctrine.odm.mongodb.document_manager" />
+            <argument>%ecommerce.model.category.class%</argument>
+        </service>
+
+        <service id="ecommerce.menu.category" class="%ecommerce.menu.category.class%" shared="true">
+            <argument type="service" id="ecommerce.repository.category" />
+            <argument type="service" id="router" />
+            <argument></argument>
+            <argument>%ecommerce.menu.category.class%</argument>
+        </service>
     </services>
 
 </container>

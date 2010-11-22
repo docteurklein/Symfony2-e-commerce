@@ -22,8 +22,8 @@ class CartTest extends TestCase
         $dm->persist($cart);
         $dm->flush();
 
-        $this->assertTrue( (string) $cart->getProducts()->get(0)->getOptions()->get(0) == 'color: blue');
-        $this->assertTrue($cart->getProducts()->get(0)->getOptions()->get(0)->getValue() == 'blue');
+        $this->assertTrue( (string) $cart->getCartProducts()->get(0)->getOptions()->get(0) == 'color: blue');
+        $this->assertTrue($cart->getCartProducts()->get(0)->getOptions()->get(0)->getValue() == 'blue');
     }
 }
 

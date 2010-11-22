@@ -18,8 +18,15 @@ class Category
 
     /**
      * @mongodb:String
+     * @gedmo:Sluggable
      */
     protected $name;
+
+    /**
+     * @mongodb:String
+     * @gedmo:Slug(unique=false)
+     */
+    protected $slug;
 
     /**
      * @mongodb:ReferenceMany(targetDocument="Bundle\ECommerce\ProductBundle\Document\Product")
@@ -50,6 +57,11 @@ class Category
     {
         $this->name = (string) $name;
         return $this;
+    }
+
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
     public function getProducts()

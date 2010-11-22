@@ -13,7 +13,7 @@ namespace Bundle\ECommerce\ProductBundle\Document;
 
 use Doctrine\ODM\MongoDB\DocumentRepository;
 
-class ProductRepository extends DocumentRepository
+class CategoryRepository extends DocumentRepository
 {
     public function findOneBySlug($slug)
     {
