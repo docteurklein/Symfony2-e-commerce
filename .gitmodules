@@ -18,7 +18,7 @@
 	url = http://github.com/zendframework/zf2.git
 [submodule "src/vendor/mongodb-odm"]
 	path = src/vendor/mongodb-odm
-	url = git://github.com/docteurklein/mongodb-odm.git
+	url = git://github.com/doctrine/mongodb-odm.git
 [submodule "src/Bundle/SecurityBundle"]
 	path = src/Bundle/SecurityBundle
 	url = git://github.com/knplabs/SecurityBundle.git
@@ -45,4 +45,4 @@
 	url = git://github.com/doctrine/data-fixtures.git
 [submodule "src/Bundle/MenuBundle"]
 	path = src/Bundle/MenuBundle
-	url = git://github.com/knplabs/MenuBundle.git
+	url = git://github.com/docteurklein/MenuBundle.git

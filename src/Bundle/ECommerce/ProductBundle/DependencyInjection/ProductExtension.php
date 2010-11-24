@@ -12,7 +12,7 @@ class ProductExtension extends Extension
     public function configLoad(array $config, ContainerBuilder $container)
     {
         $loader = new XmlFileLoader($container, __DIR__.'/../Resources/config');
-        $loader->load('model.xml');
+        $loader->load('product.xml');
     }
 
     /**

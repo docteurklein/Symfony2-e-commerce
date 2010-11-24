@@ -6,6 +6,7 @@ use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Bundle\ECommerce\ProductBundle\Document\Category;
 use Bundle\ECommerce\ProductBundle\Document\Product;
 use Bundle\ECommerce\ProductBundle\Document\Option;
 use Bundle\ECommerce\ProductBundle\Document\Attribute;
@@ -15,7 +16,7 @@ class LoadProductData implements FixtureInterface
 {
     public function load($manager)
     {
-        return $this->buildProducts($manager);
+        $this->buildProducts($manager);
     }
     
     public function getProducts()
@@ -25,7 +26,7 @@ class LoadProductData implements FixtureInterface
         {
             $product = new Product;
             $product->setAttributes($this->getAttributes());
-            $product->setName('a super product '.$i);
+            $product->setName(sprintf('a super product n°%d', $i));
             $products[] = $product;
         }
 
@@ -34,11 +35,32 @@ class LoadProductData implements FixtureInterface
 
     public function buildProducts(DocumentManager $dm)
     {
-        foreach($this->getProducts($dm) as $product)
+        foreach($this->getCategories() as $category)
         {
-            $dm->persist($product);
+            foreach($this->getProducts($dm) as $product)
+            {
+                $dm->persist($product);
+            }
+
+            $category->addProduct($product);
+            $dm->persist($category);
+
+            $dm->flush();
         }
-        $dm->flush();
+    }
+
+    protected function getCategories()
+    {
+        $categories = new ArrayCollection;
+        for($i = 1; $i < 15; $i++)
+        {
+            $category = new Category;
+            $category->setName('Category '.$i);
+
+            $categories[] = $category;
+        }
+
+        return $categories;
     }
 
     protected function getAttributes()

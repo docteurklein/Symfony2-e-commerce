@@ -7,7 +7,7 @@ use Bundle\ECommerce\ProductBundle\Document\Product;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @mongodb:Document(collection="categories")
+ * @mongodb:Document(collection="categories", repositoryClass="Bundle\ECommerce\ProductBundle\Document\CategoryRepository")
  */
 class Category
 {
