@@ -3,7 +3,7 @@
 namespace Bundle\ECommerce\ProductBundle\Document;
 
 /**
- * @mongodb:Document(collection="options")
+ * @mongodb:EmbeddedDocument
  */
 class Option
 {

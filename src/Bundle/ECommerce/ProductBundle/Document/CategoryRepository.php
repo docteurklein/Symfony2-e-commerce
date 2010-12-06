@@ -19,4 +19,16 @@ class CategoryRepository extends DocumentRepository
     {
         return $this->findOneBy(array('slug' => strtolower($slug)));
     }
+
+    public function getTree($path = '/', $separator = '/')
+    {
+        $query = $this->createQuery()
+            ->sort('path', 'asc');
+
+        if($path and $path != '/') {
+            $query->field('path')->equals(new \MongoRegex(sprintf('/^%s\%s/', $path, $separator)));
+        }
+
+        return $query->execute();
+    }
 }

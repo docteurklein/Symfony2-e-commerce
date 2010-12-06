@@ -16,11 +16,10 @@ class ProductTest extends TestCase
         $dm = $this->getDm();
         $this->loadMongoDBDataFixtures();
 
-        $product = $this->getKernel()->getContainer()->get('ecommerce.repository.product')->findOneBySlug('a super product');
-        var_dump($this->getKernel()->getContainer()->get('ecommerce.repository.product')->find()->getPrimaryKeys());
-        $this->assertTrue($product->getSlug() == 'a-super-product');
+        $product = $this->getKernel()->getContainer()->get('ecommerce.repository.product')->findOneBySlug('a-super-product-n-1');
+        $this->assertTrue($product->getSlug() == 'a-super-product-n-1');
         $product->setName('a test product');
-        $this->assertTrue($product->getSlug() == 'a-super-product');
+        $this->assertTrue($product->getSlug() == 'a-super-product-n-1');
         $dm->persist($product);
         $dm->flush();
         $this->assertTrue($product->getSlug() == 'a-test-product');

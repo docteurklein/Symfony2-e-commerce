@@ -26,7 +26,7 @@
             <tag name="menu" alias="category" />
             <argument type="service" id="ecommerce.repository.category" />
             <argument type="service" id="router" />
-            <argument>%ecommerce.menu.category.class%</argument>
+            <argument>%ecommerce.menu.item.category.class%</argument>
         </service>
     </services>
 

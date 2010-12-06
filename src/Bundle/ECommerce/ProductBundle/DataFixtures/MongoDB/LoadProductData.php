@@ -52,10 +52,25 @@ class LoadProductData implements FixtureInterface
     protected function getCategories()
     {
         $categories = new ArrayCollection;
-        for($i = 1; $i < 15; $i++)
+        $category = new Category;
+        $category->setName('Catalog');
+        $category->setPath('/');
+        $categories[] = $category;
+
+        $path =  '';
+        $sub = 1;
+        for($i = 1, $j = 1; $i < 15; $i++)
         {
             $category = new Category;
-            $category->setName('Category '.$i);
+            if($i % 3 == 0) {
+                $j++;
+                $sub = 1;
+                $path = '';
+            }
+            $category->setName('Category '.$j.$sub);
+            $path .= '/'.$j.$sub;
+            $sub++;
+            $category->setPath($path);
 
             $categories[] = $category;
         }

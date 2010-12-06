@@ -22,7 +22,7 @@ class CategoryController extends Controller
         if( ! $category) {
             throw new NotFoundHttpException('The category does not exist.');
         }
-
+        
         return $this->render('ProductBundle:Category:show.php', array('category' => $category));
     }
 }

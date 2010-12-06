@@ -7,6 +7,10 @@ product_show:
   pattern:  /product/:slug
   defaults: { _controller: ProductBundle:Product:show }
 
+categories:
+  pattern:  /categories
+  defaults: { _controller: ProductBundle:Category:index }
+
 category_show:
   pattern:  /category/:slug
   defaults: { _controller: ProductBundle:Category:show }

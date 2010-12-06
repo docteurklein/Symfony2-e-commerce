@@ -11,24 +11,15 @@ class CategoryTest extends TestCase
 {
     public function testCategory()
     {
-        $dm = $this->getDm();
+        $this->loadMongoDBDataFixtures();
 
-        $dm->query('remove Bundle\ECommerce\ProductBundle\Document\Category')->execute();
+        $category = $this->getKernel()->getContainer()->get('ecommerce.repository.category')->findOneBySlug('category-23');
+        $this->assertTrue($category->getLevel() === 3);
 
-        $product = new Product();
-        $product->setName('categorized product');
-        $dm->persist($product);
+        $product = $this->getKernel()->getContainer()->get('ecommerce.repository.product')->findOneBySlug('a-super-product-n-20');
 
-        $category = new Category;
-        $category->addProduct($product);
-
-        $dm->persist($category);
-        $dm->flush();
-        
-        $product_ref = $dm->find('Bundle\ECommerce\ProductBundle\Document\Product', $product->getId());
-
-        $this->assertTrue($category->hasProduct($product_ref));
-        $this->assertTrue($category->getProduct($product_ref)->getName() == 'categorized product');
+        $this->assertTrue($category->hasProduct($product));
+        $this->assertTrue($category->getProduct($product)->getName() == 'a super product n°20');
     }
 }
 
