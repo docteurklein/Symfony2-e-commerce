@@ -43,3 +43,6 @@
 [submodule "src/Bundle/MenuBundle"]
 	path = src/Bundle/MenuBundle
 	url = git://github.com/docteurklein/MenuBundle.git
+[submodule "src/Bundle/MongoAdminBundle"]
+	path = src/Bundle/MongoAdminBundle
+	url = git://github.com/steves/MongoAdminBundle.git
