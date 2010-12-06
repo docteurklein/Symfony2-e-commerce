@@ -11,7 +11,7 @@ class ProductController extends Controller
 {
     public function indexAction()
     {
-        $products = $this->get('ecommerce.repository.product')->find();
+        $products = $this->get('ecommerce.repository.product')->findAll();
         return $this->render('ProductBundle:Product:index.php', array('products' => $products));
     }
 

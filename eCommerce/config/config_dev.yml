@@ -18,5 +18,9 @@ zend.config:
 doctrine_odm.mongodb:
   logger_class: Symfony\Bundle\DoctrineMongoDBBundle\Logger\DoctrineMongoDBLogger
 
+mongo_admin.config:
+  servers:
+    localhost: localhost:27017
+
 twig.config:
   auto_reload: true

@@ -14,7 +14,8 @@ class SalesBundle extends Bundle
 {
     public function boot()
     {
-        parent::boot();
+        // example of odm/orm linking
+        /*parent::boot();
 
         $em = $this->container->getDoctrine_Orm_EntityManagerService();
         $dm = $this->container->getDoctrine_Odm_Mongodb_DocumentManagerService();
@@ -44,6 +45,6 @@ class SalesBundle extends Bundle
                     'type' => 'many'
                 )
             )
-        ));
+        ));*/
     }
 }

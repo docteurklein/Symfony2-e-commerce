@@ -3,9 +3,8 @@ parameters:
 
 doctrine_extensions.config:
   sluggable.mongodb: ~
-  sluggable.orm: ~
-  translatable: ~
-  tree: ~
+
+ecommerce_product.config: ~
 
 security.config:
   providers:

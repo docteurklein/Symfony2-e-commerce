@@ -4,3 +4,7 @@ _main:
 _profiler:
   resource: WebProfilerBundle/Resources/config/routing/profiler.xml
   prefix:   /_profiler
+
+mongo_admin:
+  resource: MongoAdminBundle/Resources/config/routing.yml
+  prefix: admin

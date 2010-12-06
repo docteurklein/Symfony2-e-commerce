@@ -11,7 +11,7 @@ class CategoryController extends Controller
 {
     public function indexAction()
     {
-        $categories = $this->get('ecommerce.repository.category')->find();
+        $categories = $this->get('ecommerce.repository.category')->findAll();
         return $this->render('ProductBundle:Category:index.php', array('categories' => $categories));
     }
 

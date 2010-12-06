@@ -15,12 +15,11 @@ _profiler:
   prefix:   /_profiler
 
 homepage:
-    pattern:  /
-    defaults: { _controller: ECommerceBundle:ECommerce:index }
+  pattern:  /
+  defaults: { _controller: ECommerceBundle:ECommerce:index }
 
 eCommerce:
-    resource: ECommerceBundle/Resources/config/routing.yml
+  resource: ECommerceBundle/Resources/config/routing.yml
 
 contact:
-    resource: ContactBundle/Resources/config/routing.xml
-
+  resource: ContactBundle/Resources/config/routing.xml

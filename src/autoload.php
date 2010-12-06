@@ -14,6 +14,7 @@ $loader->registerNamespaces(array(
     'Doctrine\\DBAL\\Migrations'     => __DIR__.'/vendor/doctrine-migrations/lib',
     'Doctrine\\DBAL'                 => __DIR__.'/vendor/doctrine/lib/vendor/doctrine-dbal/lib',
     'Doctrine\\ODM'                  => __DIR__.'/vendor/mongodb-odm/lib',
+    'Doctrine\\MongoDB'              => __DIR__.'/vendor/mongodb-odm/lib/vendor/doctrine-mongodb/lib',
     'Doctrine'                       => __DIR__.'/vendor/doctrine/lib',
     'Zend'                           => __DIR__.'/vendor/zend/library',
     'Gedmo'                          => __DIR__.'/vendor/doctrine-extensions/lib',

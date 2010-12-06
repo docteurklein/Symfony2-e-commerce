@@ -35,6 +35,7 @@ class ECommerceKernel extends Kernel
             new Bundle\DoctrineUserBundle\DoctrineUserBundle,
             new Bundle\ContactBundle\ContactBundle,
             new Bundle\MenuBundle\MenuBundle,
+            new Bundle\MongoAdminBundle\MongoAdminBundle,
             //new Bundle\Sensio\FrameworkExtraBundle\FrameworkExtraBundle,
 
             // ECommerce
@@ -66,7 +67,7 @@ class ECommerceKernel extends Kernel
             'Bundle\\ECommerce'  => __DIR__.'/../src/Bundle/ECommerce',
             'Application'        => __DIR__.'/../src/Application',
         );
-        
+
         return $bundles;
     }
 
