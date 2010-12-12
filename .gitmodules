@@ -46,3 +46,6 @@
 [submodule "src/Bundle/MongoAdminBundle"]
 	path = src/Bundle/MongoAdminBundle
 	url = git://github.com/steves/MongoAdminBundle.git
+[submodule "src/vendor/ZendPaginatorAdapter"]
+	path = src/vendor/ZendPaginatorAdapter
+	url = git://github.com/ornicar/ZendPaginatorAdapter.git
