@@ -15,8 +15,7 @@ zend.config:
     priority: debug
     path:     %kernel.root_dir%/logs/%kernel.environment%.log
 
-doctrine_odm.mongodb:
-  logger_class: Symfony\Bundle\DoctrineMongoDBBundle\Logger\DoctrineMongoDBLogger
+doctrine_odm.mongodb: ~
 
 mongo_admin.config:
   servers:

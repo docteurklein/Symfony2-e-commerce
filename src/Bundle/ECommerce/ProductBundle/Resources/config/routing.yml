@@ -3,6 +3,11 @@ products:
   pattern:  /products/:page
   defaults: { _controller: ProductBundle:Product:index, page: 1 }
 
+products_filter:
+  pattern:  /products/filter/action
+  defaults: { _controller: ProductBundle:Product:filter }
+  requirements: { _method: POST }
+
 product_show:
   pattern:  /product/:slug
   defaults: { _controller: ProductBundle:Product:show }

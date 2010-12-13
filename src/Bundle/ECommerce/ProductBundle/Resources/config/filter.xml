@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://www.symfony-project.org/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.symfony-project.org/schema/dic/services http://www.symfony-project.org/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="ecommerce.filter.product.class">Bundle\ECommerce\ProductBundle\Filter\Filter</parameter>
+        <parameter key="ecommerce.filter.product.form.class">Bundle\ECommerce\ProductBundle\Form\ProductFilter</parameter>
+    </parameters>
+
+    <services>
+        <service id="ecommerce.filter.product" class="%ecommerce.filter.product.class%" shared="true">
+            <argument>%ecommerce.model.product.class%</argument>
+            <argument type="service" id="doctrine.odm.mongodb.document_manager" />
+            <argument type="service" id="ecommerce.filter.product.form" />
+        </service>
+
+        <service id="ecommerce.filter.product.form" class="%ecommerce.filter.product.form.class%" shared="true">
+            <argument>product_filters</argument>
+            <argument type="collection"></argument>
+            <argument type="service" id="validator" />
+        </service>
+    </services>
+
+</container>

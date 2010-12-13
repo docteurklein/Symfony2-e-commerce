@@ -17,6 +17,8 @@ class CategoryTest extends TestCase
         $this->assertTrue($category->getLevel() === 3);
 
         $product = $this->getKernel()->getContainer()->get('ecommerce.repository.product')->findOneBySlug('a-super-product-n-20');
+        var_dump((string)$product);
+        var_dump((string)$category->getProducts()->get(0));
 
         $this->assertTrue($category->hasProduct($product));
         $this->assertTrue($category->getProduct($product)->getName() == 'a super product n°20');

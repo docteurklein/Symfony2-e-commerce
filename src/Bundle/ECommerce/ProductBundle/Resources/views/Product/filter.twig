@@ -1,0 +1,6 @@
+<form action="{% path 'products_filter' %}" {{ form|render_enctype }} method="POST" class="products_filter">
+    {{ form|render }}
+    <div>
+        <input type="submit" value="{% trans 'Filter' from 'ProductBundle' %}" />
+    </div>
+</form>

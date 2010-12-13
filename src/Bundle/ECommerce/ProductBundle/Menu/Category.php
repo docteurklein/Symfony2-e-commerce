@@ -41,6 +41,7 @@ class Category extends Menu
         foreach($this->repository->getTree($path) as $category)
         {
             $new_child = $this->createChild((string) $category, $this->router->generate('category_show', array('slug' => $category->getSlug())));
+            $new_child->setAttribute('class', 'level_'.$category->getLevel());
 
             $path = $category->getParentPath();
             if(!isset($parents[$path])) {
