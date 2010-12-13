@@ -32,6 +32,13 @@ class MappedORMEventSubscriber
         }
     }
 
+    /**
+     * @TODO move configuration in the metadata (annotation, ...) definition
+     * @TODO see for lazy loading of relations
+     * 
+     * @param LifecycleEventArgs $event_args
+     * @return void
+     */
     public function postLoad(LifecycleEventArgs $event_args)
     {
         $em = $event_args->getEntityManager();
