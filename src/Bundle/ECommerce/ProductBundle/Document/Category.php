@@ -109,8 +109,8 @@ class Category
 
     public function getProduct(Product $product)
     {
-        $key = array_search($product, $this->products->toArray(), true);
-        
+        $key = \array_search($product, $this->products->toArray(), true);
+
         if ($key !== false) {
             return $this->products->get($key);
         }
@@ -160,7 +160,7 @@ class Category
 
     public function getLevel()
     {
-        return count($this->getExplodedPath()) - 1;
+        return \count($this->getExplodedPath()) - 1;
     }
 
     public function getParentPath()
@@ -168,9 +168,9 @@ class Category
         $path = $this->getExplodedPath();
         \array_pop($path);
 
-        $parent_path = implode(self::PATH_SEPARATOR, $path);
-        
-        return $parent_path ? $parent_path : '/';
+        $parent_path = \implode(self::PATH_SEPARATOR, $path);
+
+        return $parent_path;
     }
 
     public function prePersist(LifecycleEventArgs $eventArgs)

@@ -7,7 +7,7 @@ use Bundle\ECommerce\ProductBundle\Document\Option;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @mongodb:Document(collection="attributes")
+ * @mongodb:EmbeddedDocument()
  */
 class Attribute
 {
@@ -81,7 +81,7 @@ class Attribute
     public function getOption(Option $option)
     {
         $key = array_search($option, $this->options->toArray(), true);
-        
+
         if ($key !== false) {
             return $this->options->get($key);
         }

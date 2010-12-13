@@ -19,4 +19,9 @@ class ProductRepository extends DocumentRepository
     {
         return $this->findOneBy(array('slug' => strtolower($slug)));
     }
+
+    public function getBuilder()
+    {
+        return $this->createQueryBuilder();
+    }
 }
