@@ -5,23 +5,11 @@
     xsi:schemaLocation="http://www.symfony-project.org/schema/dic/services http://www.symfony-project.org/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="ecommerce.model.product.class">Bundle\ECommerce\ProductBundle\Document\Product</parameter>
-        <parameter key="ecommerce.model.category.class">Bundle\ECommerce\ProductBundle\Document\Category</parameter>
         <parameter key="ecommerce.menu.category.class">Bundle\ECommerce\ProductBundle\Menu\Category</parameter>
         <parameter key="ecommerce.menu.item.category.class">Bundle\MenuBundle\MenuItem</parameter>
     </parameters>
 
     <services>
-        <service id="ecommerce.repository.product" class="Bundle\ECommerce\ProductBundle\ProductBundle" shared="true" factory-method="getRepository">
-            <argument type="service" id="doctrine.odm.mongodb.document_manager" />
-            <argument>%ecommerce.model.product.class%</argument>
-        </service>
-
-        <service id="ecommerce.repository.category" class="Bundle\ECommerce\ProductBundle\ProductBundle" shared="true" factory-method="getRepository">
-            <argument type="service" id="doctrine.odm.mongodb.document_manager" />
-            <argument>%ecommerce.model.category.class%</argument>
-        </service>
-
         <service id="ecommerce.menu.category" class="%ecommerce.menu.category.class%" shared="true">
             <tag name="menu" alias="category" />
             <argument type="service" id="ecommerce.repository.category" />

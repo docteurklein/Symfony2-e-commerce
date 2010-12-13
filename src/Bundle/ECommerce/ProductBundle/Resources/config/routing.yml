@@ -1,7 +1,7 @@
 
 products:
-  pattern:  /products
-  defaults: { _controller: ProductBundle:Product:index }
+  pattern:  /products/:page
+  defaults: { _controller: ProductBundle:Product:index, page: 1 }
 
 product_show:
   pattern:  /product/:slug
