@@ -33,7 +33,7 @@ class OrderTest extends TestCase
 
         MappedODMEventSubscriber::initialize($em, $dm, array(
             array(
-                'events' => \Doctrine\ODM\MongoDB\ODMEvents::postLoad,
+                'events' => \Doctrine\ODM\MongoDB\Events::postLoad,
                 'mapping' => array(
                     'document' => 'Bundle\ECommerce\ProductBundle\Document\Product',
                     'entity' => 'Bundle\ECommerce\SalesBundle\Entity\Order',
