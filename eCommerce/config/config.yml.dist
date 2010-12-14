@@ -43,6 +43,8 @@ app.config:
   validation:
     enabled: true
 
+twig.config: ~
+
 zend.config:
   logger:
     priority: info
