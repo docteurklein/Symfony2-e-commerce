@@ -6,6 +6,8 @@ doctrine_extensions.config:
 
 ecommerce_product.config: ~
 
+contact.config: ~
+
 security.config:
   providers:
     main:
