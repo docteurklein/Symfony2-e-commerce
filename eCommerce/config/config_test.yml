@@ -12,8 +12,9 @@ zend.config:
 doctrine.dbal:
   connections:
     default:
-      driver:               PDOSqlite
-      path:                 %kernel.cache_dir%/OrderTests.sqlite
+      dbname:                       symfony2_ecommerce_test
+      user:                         root
+      password:                     ~
 
 test_session.config: ~
 
