@@ -46,3 +46,6 @@
 [submodule "src/vendor/ZendPaginatorAdapter"]
 	path = src/vendor/ZendPaginatorAdapter
 	url = git://github.com/ornicar/ZendPaginatorAdapter.git
+[submodule "src/Bundle/Sensio/FrameworkExtraBundle"]
+	path = src/Bundle/Sensio/FrameworkExtraBundle
+	url = https://github.com/sensio/FrameworkExtraBundle.git
