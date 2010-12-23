@@ -7,9 +7,6 @@
 [submodule "src/vendor/swiftmailer"]
 	path = src/vendor/swiftmailer
 	url = git://github.com/swiftmailer/swiftmailer.git
-[submodule "src/Bundle/DoctrineUserBundle"]
-	path = src/Bundle/DoctrineUserBundle
-	url = git://github.com/knplabs/DoctrineUserBundle.git
 [submodule "src/vendor/symfony"]
 	path = src/vendor/symfony
 	url = git://github.com/fabpot/symfony.git
