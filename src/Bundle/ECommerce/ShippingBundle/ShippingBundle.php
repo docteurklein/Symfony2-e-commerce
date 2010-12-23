@@ -1,5 +1,4 @@
 <?php
-
 namespace Bundle\ECommerce\ShippingBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
