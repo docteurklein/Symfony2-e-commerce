@@ -2,7 +2,7 @@
 
 namespace Bundle\ECommerce\SalesBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
