@@ -23,3 +23,12 @@ eCommerce:
 
 contact:
   resource: ContactBundle/Resources/config/routing.xml
+  
+fos_security:
+  prefix:   /fos
+  resource: FOS/UserBundle/Resources/config/routing/security.xml
+
+fos_user:
+  prefix:   /fos
+  resource: FOS/UserBundle/Resources/config/routing/user.xml
+

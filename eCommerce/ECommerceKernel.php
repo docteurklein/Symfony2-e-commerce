@@ -32,7 +32,7 @@ class ECommerceKernel extends Kernel
             // Third party
             new Bundle\ConsoleAutocompleteBundle\ConsoleAutocompleteBundle,
             new Bundle\DoctrineExtensionsBundle\DoctrineExtensionsBundle,
-            new Bundle\DoctrineUserBundle\UserBundle,
+            new Bundle\FOS\UserBundle\FOSUserBundle,
             new Bundle\ContactBundle\ContactBundle,
             new Bundle\MenuBundle\MenuBundle,
             new Bundle\MongoAdminBundle\MongoAdminBundle,

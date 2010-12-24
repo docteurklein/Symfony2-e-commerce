@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://www.symfony-project.org/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.symfony-project.org/schema/dic/services http://www.symfony-project.org/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="ecommerce.param_converter.parameter_name">slug</parameter>
+    </parameters>
+
+    <services>
+        <service id="ecommerce.param_converter.product" class="Bundle\ECommerce\ProductBundle\ParamConverter\Product">
+            <tag name="request.param_converter" />
+            <argument>%ecommerce.param_converter.parameter_name%</argument>
+            <argument type="service" id="ecommerce.repository.product" />
+            <argument>%ecommerce.model.product.class%</argument>
+        </service>
+    </services>
+
+</container>

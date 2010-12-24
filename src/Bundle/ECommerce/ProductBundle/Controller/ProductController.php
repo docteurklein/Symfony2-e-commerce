@@ -63,12 +63,10 @@ class ProductController extends Controller
         return $this->indexAction();
     }
 
-    public function showAction($slug)
+    public function showAction(Product $product)
     {
-        $product = $this->get('ecommerce.repository.product')->findOneBySlug($slug);
-
         if( ! $product) {
-            throw new NotFoundHttpException(sprintf('The product %s does not exist.', $slug));
+            throw new NotFoundHttpException(sprintf('The product %s does not exist.', $this->get('request')->get('slug')));
         }
 
         return $this->render('ProductBundle:Product:show.php', array('product' => $product));

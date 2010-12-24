@@ -28,8 +28,11 @@ security.config:
     - { path: /customer.*, role: ROLE_USER }
     - { path: /.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
 
-#extra.config:
-  #cache:   { annotations: false }
+fos_user.config:
+  db_driver: odm
+  class:
+    model:
+      user: Application\ECommerceBundle\Document\User
 
 app.config:
   esi: ~
@@ -44,6 +47,7 @@ app.config:
   translator: ~
   validation:
     enabled: true
+  param_converter: true
 
 twig.config: ~
 
@@ -66,7 +70,9 @@ doctrine.orm:
   query_cache_driver:               apc
 
 doctrine_odm.mongodb:
+  default_database:                 Symfony2_ecommerce_test
   auto_generate_proxy_classes:      true
+  auto_generate_hydrator_classes:   true
   server:                           mongodb://localhost:27017
   options:
     connect:                        true

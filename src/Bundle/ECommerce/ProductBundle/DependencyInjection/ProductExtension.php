@@ -18,6 +18,7 @@ class ProductExtension extends Extension
         $loader->load('paginator.xml');
         $loader->load('menu.xml');
         $loader->load('filter.xml');
+        $loader->load('param_converter.xml');
     }
 
     /**
