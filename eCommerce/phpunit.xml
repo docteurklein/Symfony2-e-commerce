@@ -21,9 +21,12 @@
   <filter>
       <whitelist>
           <directory>../src/Application</directory>
+          <directory>../src/Bundle/ECommerce</directory>
           <exclude>
               <directory>../src/Application/*/Resources</directory>
               <directory>../src/Application/*/Tests</directory>
+              <directory>../src/Bundle/ECommerce/*/Resources</directory>
+              <directory>../src/Bundle/ECommerce/*/Tests</directory>
           </exclude>
       </whitelist>
   </filter>
