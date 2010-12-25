@@ -18,3 +18,6 @@ doctrine.dbal:
 
 test_session.config: ~
 
+
+doctrine_odm.mongodb:
+   auto_generate_hydrator_classes:  true
