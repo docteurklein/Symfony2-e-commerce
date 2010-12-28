@@ -19,9 +19,6 @@
 [submodule "src/Bundle/TestSessionBundle"]
 	path = src/Bundle/TestSessionBundle
 	url = git://github.com/knplabs/TestSessionBundle.git
-[submodule "src/Bundle/Sensio/FrameworkExtraBundle"]
-	path = src/Bundle/Sensio/FrameworkExtraBundle
-	url = git://github.com/fabpot/FrameworkExtraBundle.git
 [submodule "src/Bundle/ConsoleAutocompleteBundle"]
 	path = src/Bundle/ConsoleAutocompleteBundle
 	url = git://github.com/docteurklein/ConsoleAutocompleteBundle.git
@@ -49,3 +46,6 @@
 [submodule "src/Bundle/FOS/UserBundle"]
 	path = src/Bundle/FOS/UserBundle
 	url = git://github.com/FriendsOfSymfony/UserBundle.git
+[submodule "src/Bundle/Sensio/FrameworkExtraBundle"]
+	path = src/Bundle/Sensio/FrameworkExtraBundle
+	url = https://github.com/sensio/FrameworkExtraBundle.git

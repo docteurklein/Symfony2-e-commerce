@@ -1,6 +1,6 @@
 <?php
 
-namespace Bundle\ECommerce\ShippingBundle\Entities;
+namespace Bundle\ECommerce\ShippingBundle\Document;
 
 use Symfony\Component\Validator\Constraints;
 use Doctrine\Common\Collections\ArrayCollection;
