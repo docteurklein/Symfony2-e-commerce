@@ -13,17 +13,34 @@
 >
   <testsuites>
       <testsuite name="Project Test Suite">
-          <directory>../src/Application/*/Tests</directory>
+          <directory>../src/Application/ECommerceBundle/Tests</directory>
+          <directory>../src/Bundle/ECommerce/*/Tests</directory>
       </testsuite>
   </testsuites>
 
   <filter>
       <whitelist>
-          <directory>../src/Application</directory>
+          <directory suffix=".php">../src/Application</directory>
+          <directory suffix=".php">../src/Bundle/ECommerce</directory>
           <exclude>
               <directory>../src/Application/*/Resources</directory>
-              <directory>../src/Application/*/Tests</directory>
+              <directory>../src/Bundle/Ecommerce/*/Tests</directory>
           </exclude>
       </whitelist>
+      <blacklist>
+          <directory>../src/vendor</directory>
+    </blacklist>
   </filter>
+  
+  <logging>
+      <log type="coverage-html" target="/tmp/report" charset="UTF-8"
+           yui="true" highlight="true"
+           lowUpperBound="35" highLowerBound="70"/>
+      <log type="coverage-xml" target="/tmp/coverage.xml"/>
+      <log type="json" target="/tmp/logfile.json"/>
+      <log type="tap" target="/tmp/logfile.tap"/>
+      <log type="junit" target="/tmp/logfile.xml" logIncompleteSkipped="false"/>
+      <log type="testdox-html" target="/tmp/testdox.html"/>
+      <log type="testdox-text" target="/tmp/testdox.txt"/>
+  </logging>
 </phpunit>

@@ -1,4 +1,5 @@
 eCommerce/cache/*
 eCommerce/logs/*
 eCommerce/config/config.yml
+eCommerce/phpunit.xml
 web/bundles/*
