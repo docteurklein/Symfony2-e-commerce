@@ -1,5 +1,8 @@
 #Symfony2 e-commerce Solution
 
+Work has moved on [Vespolina](https://github.com/vespolina/vespolina) project. 
+This repository is just here for examples.
+
 
 ##Overview
 
